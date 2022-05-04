@@ -55,18 +55,41 @@ facultad es igual a ingreso en casilla de selección 9
 ###################Procesos###################
 Obtenención de perfiles
 
-perfil actual es igual a primer elemento de lista de perfiles
+verificación si perfil actual es igual a primer elemento de lista de perfiles
 
-contador es 0
+contador es igual a 0
 
 mientras contador sea menor a cantidad de elementos en lista de perfiles:
         
         si lugar de usuario es igual a lugar de perfil actual:
-            puntaje de perfil +1
+            contador +1
 
         si no, si edad de usuario es igual edad de perfil actual:
-            puntaje de pefil +1
-	  si no, si 
+            contador +1
 
+	    si no, si zona de vivienda de usuario es igual edad de perfil actual:
+            contador +1
+
+        si no, si identificación de género de usuario es igual edad de perfil actual:
+            contador +1
+
+        si no, si lista de hoobies de usuario es igual lista de hobbies de perfil actual:
+            contador +1
+
+        si no, si lista de comida de preferencia de usuario es igual a lista decomida de preferencia de perfil actual:
+            contador +1
+
+        si no, si lista de lugares preferidos de usuario es igual lista de lugares preferidos de perfil actual:
+            contador +1
+
+        si no, si identificación de género de usuario es igual edad de perfil actual:
+            contador +1
+        
+        si no, si genero de música de usuario es igual género de musica de perfil actual:
+            contador +1
+            
+        si no, si género de películas preferido de usuario es igual género de películas preferido actual:
+            contador +1
+        
         perfil actual es elemento n+1 de lista de perfiles
         sumar 1 a contador
