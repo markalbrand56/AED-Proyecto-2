@@ -34,6 +34,13 @@ facultad sexo es igual a ingreso en casilla de selección 4
 
 ###################Ventana 2###################
 
+Se muestra la ventana 2
+
+genero para match es igual a ingreso en casilla de selección 5
+
+genero del usuario sexo es igual a ingreso en casilla de selección 6
+
+facultad sexo es igual a ingreso en casilla de selección 7
 
 
 leer sexo
