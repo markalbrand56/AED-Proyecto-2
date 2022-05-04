@@ -8,6 +8,8 @@ Grupo 5:
 
 ## El algoritmo puntuará con +1 pt si las siguientes condiciones se cumplen.
 
+INICIO
+
 Obtener lista de perfiles
 
 perfil actual es igual a primer elemento de lista de perfiles
@@ -22,8 +24,5 @@ mientras contador sea menor a cantidad de elementos en lista de perfiles:
         si no, si edad de usuario es igual edad de perfil actual:
             puntaje de pefil +1
 
-        si no:
-            perfil actual es enviado a cola de perfiles. 
-            perfil actual es igual a nuevo perfil
-
-    
+        perfil actual es elemento n+1 de lista de perfiles
+        sumar 1 a contador
