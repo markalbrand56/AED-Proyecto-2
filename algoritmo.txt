@@ -10,6 +10,8 @@ Grupo 5:
 
 INICIO
 
+Ingreso a la página 
+
 ###################Ventana 1###################
 
 Se muestra la ventana 1
@@ -40,18 +42,18 @@ Se muestra la ventana 2
 
 genero para match es igual a ingreso en casilla de selección 5
 
-genero del usuario sexo es igual a ingreso en casilla de selección 6
+genero del usuario es igual a ingreso en casilla de selección 6
 
-facultad sexo es igual a ingreso en casilla de selección 7
+facultad es igual a ingreso en casilla de selección 7
 
 ###################Ventana 3###################
 
-genero del usuario sexo es igual a ingreso en casilla de selección 8
+genero del usuario es igual a ingreso en casilla de selección 8
 
-facultad sexo es igual a ingreso en casilla de selección 9
+facultad es igual a ingreso en casilla de selección 9
 
-
-Obtener lista de perfiles
+###################Procesos###################
+Obtenención de perfiles
 
 perfil actual es igual a primer elemento de lista de perfiles
 
