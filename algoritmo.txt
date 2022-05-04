@@ -12,7 +12,9 @@ INICIO
 
 ###################Ventana 1###################
 
-Se muetsra la ventana 1
+Se muestra la ventana 1
+
+Se realizan las preguntas del usuario
 
 nombre es igual a ingreso en cuadro de texto 1
 
@@ -26,11 +28,11 @@ nombre en redes sociales es igual a ingreso en cuadro de texto 5
 
 sexo es igual a ingreso en casilla de selección 1
 
-genero para match es igual a ingreso en casilla de selección 2
+género para match es igual a ingreso en casilla de selección 2
 
 genero del usuario sexo es igual a ingreso en casilla de selección 3
 
-facultad sexo es igual a ingreso en casilla de selección 4
+facultad a la que pertenece es igual a ingreso en casilla de selección 4
 
 ###################Ventana 2###################
 
