@@ -42,10 +42,12 @@ genero del usuario sexo es igual a ingreso en casilla de selección 6
 
 facultad sexo es igual a ingreso en casilla de selección 7
 
+###################Ventana 3###################
 
-leer sexo
+genero del usuario sexo es igual a ingreso en casilla de selección 8
 
-leer 
+facultad sexo es igual a ingreso en casilla de selección 9
+
 
 Obtener lista de perfiles
 
