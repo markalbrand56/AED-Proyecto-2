@@ -5,3 +5,16 @@ Grupo 5:
 - Diego Morales ####
 - Mark Albrand ####
 - Alejandro Azurdia 21242
+
+## El algoritmo puntuará con +1 pt si las siguientes condiciones se cumplen.
+
+si sexo de usuario no es igual a sexo de perfil:
+    
+    si no, si lugar de usuario es igual a lugar de perfil:
+        puntaje de perfil +1
+
+    si no, si edad de usuario es igual edad de perfil:
+        puntaje de pefil +1
+
+si no
+    perfil es igual a nuevo perfil.
