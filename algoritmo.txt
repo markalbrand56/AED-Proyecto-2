@@ -10,6 +10,36 @@ Grupo 5:
 
 INICIO
 
+###################Ventana 1###################
+
+Se muetsra la ventana 1
+
+nombre es igual a ingreso en cuadro de texto 1
+
+edad es igual a ingreso en cuadro de texto 2
+
+zona de vivienda es igual a ingreso en cuadro de texto 3
+
+signo zodiacal es igual a ingreso en cuadro de texto 4
+
+nombre en redes sociales es igual a ingreso en cuadro de texto 5
+
+sexo es igual a ingreso en casilla de selección 1
+
+genero para match es igual a ingreso en casilla de selección 2
+
+genero del usuario sexo es igual a ingreso en casilla de selección 3
+
+facultad sexo es igual a ingreso en casilla de selección 4
+
+###################Ventana 2###################
+
+
+
+leer sexo
+
+leer 
+
 Obtener lista de perfiles
 
 perfil actual es igual a primer elemento de lista de perfiles
@@ -23,6 +53,7 @@ mientras contador sea menor a cantidad de elementos en lista de perfiles:
 
         si no, si edad de usuario es igual edad de perfil actual:
             puntaje de pefil +1
+	  si no, si 
 
         perfil actual es elemento n+1 de lista de perfiles
         sumar 1 a contador
