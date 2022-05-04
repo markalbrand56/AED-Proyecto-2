@@ -1,8 +1,8 @@
 Proyecto 2 Aloritmos y Estructuras de Datos
 Universidad del Valle de Guatemala
 Grupo 5: 
-- Jimena Hernandez ####
-- Diego Morales ####
+- Jimena Hernandez 21199
+- Diego Morales 21146
 - Mark Albrand 21004
 - Alejandro Azurdia 21242
 
@@ -85,5 +85,5 @@ mientras contador sea menor a cantidad de elementos en lista de perfiles:
     si facultad es igual a facutad del perfil de actual:
         puntaje de pefil +1
         
-        
+FIN
     
