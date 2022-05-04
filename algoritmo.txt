@@ -8,13 +8,22 @@ Grupo 5:
 
 ## El algoritmo puntuará con +1 pt si las siguientes condiciones se cumplen.
 
-si sexo de usuario no es igual a sexo de perfil:
+Obtener lista de perfiles
+
+perfil actual es igual a primer elemento de lista de perfiles
+
+contador es 0
+
+mientras contador sea menor a cantidad de elementos en lista de perfiles:
+        
+        si lugar de usuario es igual a lugar de perfil actual:
+            puntaje de perfil +1
+
+        si no, si edad de usuario es igual edad de perfil actual:
+            puntaje de pefil +1
+
+        si no:
+            perfil actual es enviado a cola de perfiles. 
+            perfil actual es igual a nuevo perfil
+
     
-    si no, si lugar de usuario es igual a lugar de perfil:
-        puntaje de perfil +1
-
-    si no, si edad de usuario es igual edad de perfil:
-        puntaje de pefil +1
-
-si no
-    perfil es igual a nuevo perfil.
