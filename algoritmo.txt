@@ -3,7 +3,7 @@ Universidad del Valle de Guatemala
 Grupo 5: 
 - Jimena Hernandez ####
 - Diego Morales ####
-- Mark Albrand ####
+- Mark Albrand 21004
 - Alejandro Azurdia 21242
 
 ## El algoritmo puntuará con +1 pt si las siguientes condiciones se cumplen.
@@ -64,9 +64,27 @@ mientras contador sea menor a cantidad de elementos en lista de perfiles:
         si lugar de usuario es igual a lugar de perfil actual:
             puntaje de perfil +1
 
-        si no, si edad de usuario es igual edad de perfil actual:
+        si edad de usuario es igual edad de perfil actual:
             puntaje de pefil +1
-	  si no, si 
 
-        perfil actual es elemento n+1 de lista de perfiles
-        sumar 1 a contador
+	    si comida preferida es igual a comida preferida de perfil actual:
+            puntaje de pefil +1
+        
+        por cada hobbie que sea igual a hobbies del perfil actual:
+            puntaje de pefil +1
+        
+        por cada lugar preferido que sea igual a lugares preferidos del perfil actual:
+            puntaje de pefil +1
+        
+        por cada genero de música que sea igual a generos de música del perfil actual:
+            puntaje de pefil +1
+        
+        por cada genero de película que sea igual a generos de película del perfil actual:
+            puntaje de pefil +1
+
+        si facultad es igual a facutad del perfil de actual:
+            puntaje de pefil +1
+        
+        
+        
+
