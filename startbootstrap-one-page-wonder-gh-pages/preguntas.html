@@ -20,6 +20,27 @@ body {
   min-width: 300px;
 }
 
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
 h1 {
   text-align: center;  
 }
@@ -40,6 +61,50 @@ input.invalid {
 /* Hide all steps by default: */
 .tab {
   display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 button {
@@ -83,26 +148,167 @@ button:hover {
 </style>
 <body>
 
-<form id="regForm" action="/action_page.php">
-  <h1>Register:</h1>
+<form id="regForm" action="mensajesucces.html">
+  <h1>Registro:</h1>
   <!-- One "tab" for each step in the form: -->
-  <div class="tab">Name:
-    <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
-    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+  <div class="tab">Información Personal:
+    <p><input placeholder="Nombre" oninput="this.className = ''" name="nombre"></p>
+    <p><input placeholder="Apellido" oninput="this.className = ''" name="apellido"></p>
+    <p><input placeholder="Zona de residencia" oninput="this.className = ''" name="residencia"></p>
+    <p><input placeholder="Signo zodiacal" oninput="this.className = ''" name="signo"></p>
+    <p><input placeholder="Username en redes sociales" oninput="this.className = ''" name="userredes"></p>
   </div>
-  <div class="tab">Contact Info:
-    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+  <div class="tab">¿Cual es tu sexo?
+    <p><label class="container">Hombre
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Mujer
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><div>¿Con que genero quieres hacer match?</div></p>  
+    <p><label class="container">Hombres
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Mujeres
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><div>¿Cómo te identificas?</div></p>  
+    <p><label class="container">Heterosexual
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Homosexual
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Bisexual
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Asexual
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Transexual
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Fluido
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Pansexual
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>                            
   </div>
-  <div class="tab">Birthday:
-    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+  <div class="tab">
+    <p><div>Marca tus hobbies favoritos: </div></p>  
+    <p><label class="container">Salir con amigos
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Jugar videojuegos
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Ir de fiesta
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Hacer deporte
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Ver peliculas o series
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Viajar
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><div>Marca tus comidas favoritas: </div></p>  
+    <p><label class="container">Salir con amigos
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Pizza
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Sushi
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Hamburguesas
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Tacos
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Carnes
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><div>Marca tus lugares favoritos: </div></p>  
+    <p><label class="container">Cine
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Restaurantes
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Bares
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Teatro
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Playa
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Antigua Guatemala
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
   </div>
-  <div class="tab">Login Info:
-    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-  </div>
+  <div class="tab">
+    <p><div>Marca tus generos de musica favoritos: </div></p>  
+    <p><label class="container">Reggaeton
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Jazz
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Rock
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Pop
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Alternativo
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Trap
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p> 
+    <p><label class="container">Hip-Hop
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p> 
+    <p><label class="container">Cumbia
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><div>Marca tus generos de peliculas favoritas: </div></p>  
+    <p><label class="container">Romanticas
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Terror
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Ficción
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Accion
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Comedia
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Ciencia ficción
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Documentales
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Musicales
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Aventura
+        <input type="checkbox">
+        <span class="checkmark"></span></label></p>  
+  </div>    
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
