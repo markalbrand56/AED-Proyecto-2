@@ -1,0 +1,19 @@
+/*
+
+Campos
+    Persona:
+        Nombre
+        Email
+        Instagram
+        Carrera
+        Sexo
+        Signo zodiacal
+        Zona de residencia
+        Edad
+
+    Gusto:
+        Titulo
+
+*/
+
+CREATE (Mark)
