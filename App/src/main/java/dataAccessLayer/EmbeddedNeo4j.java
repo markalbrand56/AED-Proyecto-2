@@ -83,6 +83,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
          }
     }
     
+    // Lo que le gusta a Mark, la paloma.
     public LinkedList<String> getMoviesByActor(String actor)
     {
    	 try ( Session session = driver.session() )
@@ -94,12 +95,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public LinkedList<String> execute( Transaction tx )
                 {
-                    Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    LinkedList<String> myactors = new LinkedList<String>();
+                    Result result = tx.run( "MATCH(p:Persona {nombre:\"Mark Albrand\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+                    LinkedList<String> myactors = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
                    	 //myactors.add(registros.get(i).toString());
-                   	 myactors.add(registros.get(i).get("actorMovies.title").asString());
+                   	 myactors.add(registros.get(i).get("gustos.titulo").asString());
                     }
                     
                     return myactors;
