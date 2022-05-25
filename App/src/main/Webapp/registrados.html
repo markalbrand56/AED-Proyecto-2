@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
     <body>                    
-            <input type="button" onclick="mostrar()" value="Ver actores">
+        <input type="button" value="Mostrar Actores" onclick="mostrar()">
                     
         <script>
-            function mostrar(){
-                alert("Estos son los actores registrados");
-                ajax({
+        function mostrar(){
+		        alert("The button was clicked 1");
+				
+                $.ajax( {
+                    
                     type: "GET",
                     url: '/HelloWorld/HelloServlet',
-                    success: function(data){
-                        alert("Entramos en el success");
-                        var Listactores='<ul>';
-                        $.each(data.actores, function(i, item){
-                            Listactores+='<li>'+item+'</li>';
+                    success: function(data) {
+                        //alert("Result" + data.resultado);
+                        var htmlActorsList = '<ul>';
+                        $.each(data.actores, function(i,item){
+                            htmlActorsList += '<li>' + item + '</li>';
                         });
-                        Listactores+='</ul>';
-                        ('#div-listado-actores').html("")    
-                        ('#div-listado-actores').append(Listactores)  
+                        htmlActorsList += '</ul>';
+                        $('#div-listado-actores').html("");
+                        $('#div-listado-actores').append(htmlActorsList);
                     }
-                }); 
-            };(jQuery); 
+                } );
+            }
+		
+   
         </script>    
     </body>
 </html>        
