@@ -30,5 +30,5 @@ replay_pid*
 *.DS_Store
 *.dia.autosave
 *.dia~
-*.txt
 /.vscode
+ejemplo_peliculas.txt

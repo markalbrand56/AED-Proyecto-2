@@ -1,0 +1,89 @@
+Proyecto 2 Aloritmos y Estructuras de Datos
+Universidad del Valle de Guatemala
+Grupo 5: 
+- Jimena Hernandez 21199
+- Diego Morales 21146
+- Mark Albrand 21004
+- Alejandro Azurdia 21242
+
+## El algoritmo puntuará con +1 pt si las siguientes condiciones se cumplen.
+
+INICIO
+
+Ingreso a la página 
+
+###################Ventana 1###################
+
+Se muestra la ventana 1
+
+Se realizan las preguntas del usuario
+
+nombre es igual a ingreso en cuadro de texto 1
+
+edad es igual a ingreso en cuadro de texto 2
+
+zona de vivienda es igual a ingreso en cuadro de texto 3
+
+signo zodiacal es igual a ingreso en cuadro de texto 4
+
+nombre en redes sociales es igual a ingreso en cuadro de texto 5
+
+sexo es igual a ingreso en casilla de selección 1
+
+género para match es igual a ingreso en casilla de selección 2
+
+genero del usuario sexo es igual a ingreso en casilla de selección 3
+
+facultad a la que pertenece es igual a ingreso en casilla de selección 4
+
+###################Ventana 2###################
+
+Se muestra la ventana 2
+
+genero para match es igual a ingreso en casilla de selección 5
+
+genero del usuario es igual a ingreso en casilla de selección 6
+
+facultad es igual a ingreso en casilla de selección 7
+
+###################Ventana 3###################
+
+genero del usuario es igual a ingreso en casilla de selección 8
+
+facultad es igual a ingreso en casilla de selección 9
+
+###################Procesos###################
+Obtenención de perfiles
+
+verificación si perfil actual es igual a primer elemento de lista de perfiles
+
+contador es igual a 0
+
+mientras contador sea menor a cantidad de elementos en lista de perfiles:
+        
+    si lugar de usuario es igual a lugar de perfil actual:
+        contador +1
+
+    si edad de usuario es igual edad de perfil actual:
+        puntaje de pefil +1
+
+    si comida preferida es igual a comida preferida de perfil actual:
+        puntaje de pefil +1
+    
+    por cada hobbie que sea igual a hobbies del perfil actual:
+        puntaje de pefil +1
+    
+    por cada lugar preferido que sea igual a lugares preferidos del perfil actual:
+        puntaje de pefil +1
+    
+    por cada genero de música que sea igual a generos de música del perfil actual:
+        puntaje de pefil +1
+    
+    por cada genero de película que sea igual a generos de película del perfil actual:
+        puntaje de pefil +1
+
+    si facultad es igual a facutad del perfil de actual:
+        puntaje de pefil +1
+        
+FIN
+    
