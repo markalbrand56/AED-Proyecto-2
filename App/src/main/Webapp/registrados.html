@@ -6,7 +6,7 @@
         <script>
             function mostrar(){
                 alert("Estos son los actores registrados");
-                $.ajax({
+                ajax({
                     type: "GET",
                     url: '/HelloWorld/HelloServlet',
                     success: function(data){
@@ -16,8 +16,8 @@
                             Listactores+='<li>'+item+'</li>';
                         });
                         Listactores+='</ul>';
-                        $('#div-listado-actores').html("")    
-                        $('#div-listado-actores').append(Listactores)  
+                        ('#div-listado-actores').html("")    
+                        ('#div-listado-actores').append(Listactores)  
                     }
                 }); 
             };(jQuery); 
