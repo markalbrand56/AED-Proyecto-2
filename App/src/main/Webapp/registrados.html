@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="container-fluid">
+
+            <!-- Content Row -->
+            <div class="row">
+
+
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Search Actor</h1>
+                    </div>
+                <form class="user">
+                        
+                            
+                    <input type="text" class="form-control" id="txt-actor" placeholder="Actor Name">
+                            
+                       <br/>
+                            
+                    <input type="button" class="btn btn-primary form-control" id="btn-search-movies-by-actor" value="Buscar Peliculas de Actor">
+                    
+                    <br/>
+                    <br/>
+                    
+                    <input type="button" class="btn btn-primary form-control" id="btn-search-actors" value="Ver actores">
+                    
+                    <br/>
+                    
+                    <hr>
+                        
+                </form>
+                    <hr>
+                    
+                
+            </div>
+            <div class="col-lg-4"></div>
+
+            </div>
+            <!--  End content row -->
+            
+             <!-- Content Row -->
+            <div class="row">
+
+
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4" id="div-listado-actores">
+                    
+                
+            </div>
+            <div class="col-lg-4"></div>
+
+            </div>
+            <!--  End content row -->
+
+        </div>
+    <script>
+        (function($) {
+            "use strict";
+            $("#btn-search-actors").click(function(){
+                alert("The button was clicked 1");
+                        
+                $.ajax( {
+                    
+                    type: "GET",
+                    url: '/HelloWorld/HelloServlet',
+                    success: function(data) {
+                        //alert("Result" + data.resultado);
+                        var htmlActorsList = '<ul>';
+                        $.each(data.actores, function(i,item){
+                            htmlActorsList += '<li>' + item + '</li>';
+                        });
+                        htmlActorsList += '</ul>';
+                        $('#div-listado-actores').html("");
+                        $('#div-listado-actores').append(htmlActorsList);
+                    }
+                } );
+                
+                
+                });
+        })(jQuery);
+    </script>    
+    </body>
+</html>        
