@@ -1,61 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <div class="container-fluid">
-
-            <!-- Content Row -->
-            <div class="row">
-
-
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-                
-                    <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Search Actor</h1>
-                    </div>
-                <form class="user">
-                        
-                            
-                    <input type="text" id="txt-actor" placeholder="Actor Name">
-                            
-                       <br/>
-                            
-                    <input type="button" id="btn-search-movies-by-actor" value="Buscar Peliculas de Actor">
+    <body>                    
+            <input type="button" onclick="mostrar()" value="Ver actores">
                     
-                    <br/>
-                    <br/>
-                    
-                    <input type="button" id="btn-search-actors" value="Ver actores">
-                    
-                    <br/>
-                    
-                    <hr>
-                        
-                </form>
-                    <hr>
-                    
-                
-            </div>
-            <div class="col-lg-4"></div>
-
-            </div>
-            <!--  End content row -->
-            
-             <!-- Content Row -->
-            <div class="row">
-
-
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4" id="div-listado-actores">
-                    
-                
-            </div>
-            <div class="col-lg-4"></div>
-
-            </div>
-            <!--  End content row -->
-
-        </div>
-        <script src="js/scripts.js"></script>    
+        <script>
+            function mostrar(){
+                alert("Estos son los actores registrados");
+                $.ajax({
+                    type: "GET",
+                    url: '/HelloWorld/HelloServlet',
+                    success: function(data){
+                        alert("Entramos en el success");
+                        var Listactores='<ul>';
+                        $.each(data.actores, function(i, item){
+                            Listactores+='<li>'+item+'</li>';
+                        });
+                        Listactores+='</ul>';
+                        $('#div-listado-actores').html("")    
+                        $('#div-listado-actores').append(Listactores)  
+                    }
+                }); 
+            };(jQuery); 
+        </script>    
     </body>
 </html>        
