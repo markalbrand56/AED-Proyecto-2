@@ -87,36 +87,38 @@ public class EmbeddedNeo4j implements AutoCloseable{
     public LinkedList<String> getRecomendacion(String usuario)
     {
 
-        HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, String>();
+        HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
         List<String> ids = getRegistrados();
 
         for (int i = 0; i < ids.size(); i++) {
-            hashmapDeQuimica.put(ids.get(i), 0);
+        	if (!ids.get(i).equals(usuario)){
+        		hashmapDeQuimica.put(ids.get(i), 0);        		
+        	}
         }
 
-   	 try ( Session session = driver.session() )
-        {
-   		 
-   		 
-   		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
-            {
-                @Override
-                public LinkedList<String> execute( Transaction tx )
-                {
-                    Result result = tx.run( "MATCH(p:Persona {nombre:\"Mark Albrand\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
-                    LinkedList<String> myactors = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
-                    List<Record> registros = result.list();
-                    for (int i = 0; i < registros.size(); i++) {
-                   	 //myactors.add(registros.get(i).toString());
-                   	 myactors.add(registros.get(i).get("gustos.titulo").asString());
-                    }
-
-
-
-
-                    return myactors;
-                }
-            } );
+		 try ( Session session = driver.session() )
+		    {
+			 
+			 
+			 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
+		        {
+		            @Override
+		            public LinkedList<String> execute( Transaction tx )
+		            {
+		                Result result = tx.run( "MATCH(p:Persona {nombre:\"Mark Albrand\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+		            LinkedList<String> myactors = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
+		            List<Record> registros = result.list();
+		            for (int i = 0; i < registros.size(); i++) {
+		           	 //myactors.add(registros.get(i).toString());
+		           	 myactors.add(registros.get(i).get("gustos.titulo").asString());
+		            }
+		
+		
+		
+		
+		            return myactors;
+		        }
+		    } );
 
             
             
