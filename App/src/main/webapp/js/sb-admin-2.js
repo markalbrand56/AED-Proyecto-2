@@ -1,35 +1,11 @@
 (function($) {
   "use strict"; // Start of use strict
 
-	
-	//Evento del botón que me devuelve el listado de películas de un determinado actor
-	$("#btn-search-movies-by-actor").click(function(){
-				
-		$.ajax( {
-			
-			type: "GET",
-			url: '/HelloWorld/Recomendacion?carnet=' + $('#txt-actor').val(),
-			success: function(data) {
-				//alert("Result" + data.resultado);
-			    var htmlMovieList = '<ul>';
-				$.each(data.peliculas, function(i,item){
-					  htmlMovieList += '<li>' + item + '</li>';
-				});
-				htmlMovieList += '</ul>';
-				$('#div-listado-actores').html("");
-				$('#div-listado-actores').append(htmlMovieList);
-			}
-		} );
 		
-		
-	});
-	
-	
 	//Evento del botón que creara una nueva pelicula
-	$("#btn_mostraractores").click(
+	$("#btn_mostrarusuarios").click(
 
     function (){
-      alert("The button was clicked 1");
   
           $.ajax( {
               
@@ -37,13 +13,16 @@
               url: '/HelloWorld/HelloServlet',
               success: function(data) {
                   //alert("Result" + data.resultado);
-                  var htmlActorsList = '<ul>';
+                  var htmlUsersList = '<ol id="lista4">';
                   $.each(data.usuarios, function(i,item){
-                      htmlActorsList += '<li>' + item + '</li>';
+                      htmlUsersList += '<li>' + item + '</li>';
                   });
-                  htmlActorsList += '</ul>';
-                  $('#div-listado-actores').html("");
-                  $('#div-listado-actores').append(htmlActorsList);
+                  htmlUsersList += '</ol>';
+                  $('#titulo').html("");
+                  $('#titulo').append("<h3>¡Estos son nuestros matchers!</h3>");
+                  $('#div-listado-usuarios').html("");
+                  $('#div-listado-usuarios').append(htmlUsersList);
+                 
               }
           } );
       }
@@ -52,19 +31,20 @@
 
   	//Evento del botón que me devuelve el listado de películas de un determinado actor
 	$("#btn_match").click(
-    function(){
-		alert("The button was clicked 1");		
+    function(){		
 		$.ajax( {
 			
 			type: "GET",
 			url: '/HelloWorld/Recomendacion?carnet=' + $('#carnet').val(),
 			success: function(data) {
 				//alert("Result" + data.resultado);
-			    var htmlMatchList = '<ul>';
+			    var htmlMatchList = '<ol id="lista4">';
 				$.each(data.recomendaciones, function(i,item){
 					  htmlMatchList += '<li>' + item + '</li>';
 				});
-				htmlMatchList += '</ul>';
+				htmlMatchList += '</ol>';
+                $('#titulo').html("");
+				$('#titulo').append("<h3>¡Estos son tus matchs!</h3>");
 				$('#div-listado-match').html("");
 				$('#div-listado-match').append(htmlMatchList);
 			}
@@ -72,7 +52,6 @@
 		
 		
 	});
-
 
 
 
