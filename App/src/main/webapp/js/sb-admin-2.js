@@ -82,7 +82,7 @@
 		$.ajax( {
 			
 			type: "GET",
-			url: '/HelloWorld/MoviesByActor?actor_name=' + $('#txt-actor').val(),
+			url: '/HelloWorld/Recomendacion?carnet=' + $('#txt-actor').val(),
 			success: function(data) {
 				//alert("Result" + data.resultado);
 			    var htmlMovieList = '<ul>';
