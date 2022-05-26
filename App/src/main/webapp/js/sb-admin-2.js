@@ -21,7 +21,7 @@
                   $('#titulo').html("");
                   $('#titulo').append("<h3>¡Estos son nuestros matchers!</h3>");
                   $('#div-listado-usuarios').html("");
-                  $('#div-listado-usiarios').append(htmlUsersList);
+                  $('#div-listado-usuarios').append(htmlUsersList);
                  
               }
           } );
