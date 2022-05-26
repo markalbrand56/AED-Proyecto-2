@@ -43,10 +43,10 @@ public class MoviesByActor extends HttpServlet {
 	 	
 	 	JSONArray PeliculasActor = new JSONArray();
 	 	
-	 	String myActor = request.getParameter("actor_name");
+	 	String usuario = request.getParameter("carnet");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 	        {
-			 	LinkedList<String> myactors = greeter.getMoviesByActor(myActor);
+			 	LinkedList<String> myactors = greeter.getMoviesByActor(usuario);
 			 	
 			 	for (int i = 0; i < myactors.size(); i++) {
 			 		 //out.println( "<p>" + myactors.get(i) + "</p>" );
