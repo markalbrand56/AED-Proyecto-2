@@ -83,7 +83,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
          }
     }
     
-    public LinkedList<String> getMoviesByActor(String actor)
+    public LinkedList<String> getRecomendacion(String usuario)
     {
    	 try ( Session session = driver.session() )
         {
