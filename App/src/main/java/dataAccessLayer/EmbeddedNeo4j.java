@@ -14,6 +14,7 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 /**
@@ -85,6 +86,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
     
     public LinkedList<String> getRecomendacion(String usuario)
     {
+
+        HashMap<String, String> hashmapDeQuimica = new HashMap<String, String>();
+
    	 try ( Session session = driver.session() )
         {
    		 
@@ -101,10 +105,19 @@ public class EmbeddedNeo4j implements AutoCloseable{
                    	 //myactors.add(registros.get(i).toString());
                    	 myactors.add(registros.get(i).get("gustos.titulo").asString());
                     }
-                    
+
+
+
+
                     return myactors;
                 }
             } );
+
+            List<String> ids = getRegistrados();
+
+            for (int i = 0; i < actors.size(); i++) {
+                hashmapDeQuimica.put(ids.get(i), actors.get(i));
+            }
             
             return actors;
         }
