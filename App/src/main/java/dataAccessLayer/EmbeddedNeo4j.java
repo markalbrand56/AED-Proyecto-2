@@ -14,9 +14,8 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 /**
  * @author Administrator
  *
@@ -125,12 +124,14 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
             for (int i = 0; i < ids.size(); i++) {
 
+                String nombreRegistrado = ids.get(i);
+
                 LinkedList<String> gustosDeRegistrado = session.readTransaction( new TransactionWork<LinkedList<String>>()
                 {
                     @Override
                     public LinkedList<String> execute( Transaction tx )
                     {
-                        Result result = tx.run( "MATCH(p:Persona {nombre:\"" + usuario + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+                        Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistrado + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
                         LinkedList<String> gustos = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
                         List<Record> registros = result.list();
                         for (int i = 0; i < registros.size(); i++) {
@@ -151,14 +152,16 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     }
                 }
 
-                LinkedList<String> recomendaciones = new LinkedList<>();
-                
+            }
 
+            LinkedList<String> recomendaciones = new LinkedList<>();
 
-
-
-
-
+            // obtener el valor mas alto de las values del hashmap.
+            int max = Collections.max(hashmapDeQuimica.values());
+            for (Map.Entry<String, Integer> entry : hashmapDeQuimica.entrySet()) {
+                if (entry.getValue() == max) {
+                    recomendaciones.add(entry.getKey());
+                }
             }
 
 
@@ -166,9 +169,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
 
 
-
-
-            return idRecomendados;
+            return recomendaciones;
         }
    }
 
