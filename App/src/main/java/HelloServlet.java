@@ -40,15 +40,15 @@ public class HelloServlet extends HttpServlet {
 		 	response.setCharacterEncoding("UTF-8");
 		 	JSONObject myResponse = new JSONObject();
 		 	
-		 	JSONArray nombresActores = new JSONArray();
+		 	JSONArray nombreUsuarios = new JSONArray();
 		 	
 		 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 		        {
-				 	LinkedList<String> myactors = greeter.getActors();
+				 	LinkedList<String> usuarios = greeter.getRegistrados();
 				 	
-				 	for (int i = 0; i < myactors.size(); i++) {
+				 	for (int i = 0; i < usuarios.size(); i++) {
 				 		 //out.println( "<p>" + myactors.get(i) + "</p>" );
-				 		nombresActores.add(myactors.get(i));
+				 		nombreUsuarios.add(usuarios.get(i));
 				 	}
 		        	
 		        } catch (Exception e) {
@@ -56,35 +56,10 @@ public class HelloServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 		 	
-		 	myResponse.put("conteo", nombresActores.size()); //Guardo la cantidad de actores
-		 	myResponse.put("actores", nombresActores);
+		 	myResponse.put("conteo", nombreUsuarios.size()); //Guardo la cantidad de actores
+		 	myResponse.put("actores", nombreUsuarios);
 		 	out.println(myResponse);
 		 	out.flush();  
-		 	
-	        /*
-	        out.println("<html>");
-	        out.println("<head>");
-	        out.println("<title>Hello World!</title>");
-	        out.println("</head>");
-	        out.println("<body>");
-	        out.println("<h1>"+ request.getParameter("parametro") +"</h1>");
-	        
-	        try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "Test1234" ) )
-	        {
-			 	LinkedList<String> myactors = greeter.getActors();
-			 	
-			 	for (int i = 0; i < myactors.size(); i++) {
-			 		 out.println( "<p>" + myactors.get(i) + "</p>" );
-			 	}
-	        	
-	        } catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
-	        out.println("</body>");
-	        out.println("</html>");
-	        */
 	}
 
 	/**
