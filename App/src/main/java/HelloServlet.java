@@ -56,8 +56,7 @@ public class HelloServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 		 	
-		 	myResponse.put("conteo", nombreUsuarios.size()); //Guardo la cantidad de actores
-		 	myResponse.put("actores", nombreUsuarios);
+		 	myResponse.put("usuarios", nombreUsuarios);
 		 	out.println(myResponse);
 		 	out.flush();  
 	}

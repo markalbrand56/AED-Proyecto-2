@@ -58,7 +58,6 @@ public class MoviesByActor extends HttpServlet {
 				e.printStackTrace();
 			}
 	 	
-	 	myResponse.put("conteo", PeliculasActor.size()); //Guardo la cantidad de actores
 	 	myResponse.put("peliculas", PeliculasActor);
 	 	out.println(myResponse);
 	 	out.flush();  
