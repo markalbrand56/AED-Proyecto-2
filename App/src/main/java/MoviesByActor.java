@@ -60,7 +60,6 @@ public class MoviesByActor extends HttpServlet {
 	 	
 	 	 myResponse.put("recomendaciones", recomendaciones);
 	 	out.println(myResponse);
-	 	out.println(usuario);
 	 	out.flush();  
 	 	
 	}
