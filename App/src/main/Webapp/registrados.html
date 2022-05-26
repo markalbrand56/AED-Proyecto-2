@@ -57,6 +57,18 @@ span.psw {
   padding-top: 16px;
 }
 
+.myDiv {
+  text-align: center;
+  width: auto;  
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 800;
+  line-height: 1.2;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
@@ -83,9 +95,14 @@ span.psw {
         <script src="js/sb-admin-2.js"> </script>
         
         <button type="button"  onclick="window.location='index.html';" class="cancelbtn">Cancel</button>
+        
         <br/>
+        <div class="myDiv">
+            <h2>Encontramos estos match para ti:</h2>
+        </div>
         <div id="div-listado-actores"></div>
         <br/>
+
         </div>
         </form>
     </body>
