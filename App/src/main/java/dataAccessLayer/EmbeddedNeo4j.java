@@ -110,7 +110,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		            @Override
 		            public LinkedList<String> execute( Transaction tx )
 		            {
-		                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + usuario + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+		                Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
 		            LinkedList<String> gustos = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
 		            List<Record> registros = result.list();
 		            for (int i = 0; i < registros.size(); i++) {
