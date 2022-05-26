@@ -87,42 +87,88 @@ public class EmbeddedNeo4j implements AutoCloseable{
     public LinkedList<String> getRecomendacion(String usuario)
     {
 
-        HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
-        List<String> ids = getRegistrados();
-
-        for (int i = 0; i < ids.size(); i++) {
-        	if (!ids.get(i).equals(usuario)){
-        		hashmapDeQuimica.put(ids.get(i), 0);        		
-        	}
-        }
-
 		 try ( Session session = driver.session() )
 		    {
+
+            HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
+            List<String> ids = getRegistrados();
+
+            for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
+                if(ids.get(i) == usuario){
+                    ids.remove(i);
+                }
+            }
+
+            for (int i = 0; i < ids.size(); i++) { // Hacer el hashmap
+                if (!ids.get(i).equals(usuario)){
+                    hashmapDeQuimica.put(ids.get(i), 0);
+                }
+            }
 			 
-			 
-			 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
+			 // Obtener los gustos de la persona para compararlos con los demás.
+			 LinkedList<String> gustosUsuario = session.readTransaction( new TransactionWork<LinkedList<String>>()
 		        {
 		            @Override
 		            public LinkedList<String> execute( Transaction tx )
 		            {
-		                Result result = tx.run( "MATCH(p:Persona {nombre:\"Mark Albrand\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
-		            LinkedList<String> myactors = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
+		                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + usuario + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+		            LinkedList<String> gustos = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
 		            List<Record> registros = result.list();
 		            for (int i = 0; i < registros.size(); i++) {
 		           	 //myactors.add(registros.get(i).toString());
-		           	 myactors.add(registros.get(i).get("gustos.titulo").asString());
+                        gustos.add(registros.get(i).get("gustos.titulo").asString());
 		            }
 		
-		
-		
-		
-		            return myactors;
+		            return gustos; //devuelve los gustos de un usuario.
 		        }
 		    } );
 
-            
-            
-            return actors;
+            for (int i = 0; i < ids.size(); i++) {
+
+                LinkedList<String> gustosDeRegistrado = session.readTransaction( new TransactionWork<LinkedList<String>>()
+                {
+                    @Override
+                    public LinkedList<String> execute( Transaction tx )
+                    {
+                        Result result = tx.run( "MATCH(p:Persona {nombre:\"" + usuario + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+                        LinkedList<String> gustos = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
+                        List<Record> registros = result.list();
+                        for (int i = 0; i < registros.size(); i++) {
+                            //myactors.add(registros.get(i).toString());
+                            gustos.add(registros.get(i).get("gustos.titulo").asString());
+                        }
+
+                        return gustos; //devuelve los gustos de un usuario.
+                    }
+                } );
+
+                for (int j = 0; j < gustosUsuario.size(); j++) {
+                    if(gustosUsuario.get(i) == gustosDeRegistrado.get(i)){
+                        //hashmapDeQuimica.get(ids.get(i))
+                        int puntuacion = hashmapDeQuimica.get(ids.get(i));
+                        puntuacion = puntuacion ++;
+                        hashmapDeQuimica.put(ids.get(i), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                    }
+                }
+
+                LinkedList<String> recomendaciones = new LinkedList<>();
+                
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+            return idRecomendados;
         }
    }
 
