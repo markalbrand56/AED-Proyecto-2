@@ -79,18 +79,22 @@ span.psw {
 
   <div class="container">
     <label for="uname"><b>Carnet</b></label>
-    <input type="text" placeholder="Ingresa tu carnet" name="uname" required>
+    <input type="text" placeholder="Ingresa tu carnet" id="carnet" required>
 
         
-    <button type="submit">Vamos!</button>
-    <label>
-    </label>
+    <button type="button" id="btn_match">Vamos!</button>
   </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/sb-admin-2.js"> </script>
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button"  onclick="window.location='index.html';" class="cancelbtn">Cancel</button>
   </div>
+  <br/>
+  <div id="div-listado-match"></div>
+  <br/>
 </form>
+
 
 </body>
 </html>
