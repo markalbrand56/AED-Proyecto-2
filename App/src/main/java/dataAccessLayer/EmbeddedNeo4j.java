@@ -87,7 +87,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
     public LinkedList<String> getRecomendacion(String usuario)
     {
 
-        HashMap<String, String> hashmapDeQuimica = new HashMap<String, String>();
+        HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, String>();
+        List<String> ids = getRegistrados();
+
+        for (int i = 0; i < ids.size(); i++) {
+            hashmapDeQuimica.put(ids.get(i), 0);
+        }
 
    	 try ( Session session = driver.session() )
         {
@@ -113,11 +118,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 }
             } );
 
-            List<String> ids = getRegistrados();
-
-            for (int i = 0; i < actors.size(); i++) {
-                hashmapDeQuimica.put(ids.get(i), actors.get(i));
-            }
+            
             
             return actors;
         }
