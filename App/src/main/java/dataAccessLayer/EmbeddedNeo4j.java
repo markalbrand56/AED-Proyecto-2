@@ -90,7 +90,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		    {
 
             HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
-            List<String> ids = getRegistrados();
+            LinkedList<String> ids = getRegistrados();
 
             for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
                 if(ids.get(i) == usuario){
@@ -144,10 +144,10 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 } );
 
                 for (int j = 0; j < gustosUsuario.size(); j++) {
-                    if(gustosUsuario.get(i) == gustosDeRegistrado.get(i)){
+                    if(gustosUsuario.get(j) == gustosDeRegistrado.get(j)){
                         //hashmapDeQuimica.get(ids.get(i))
                         int puntuacion = hashmapDeQuimica.get(ids.get(i));
-                        puntuacion = puntuacion ++;
+                        puntuacion = puntuacion++;
                         hashmapDeQuimica.put(ids.get(i), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
                     }
                 }
