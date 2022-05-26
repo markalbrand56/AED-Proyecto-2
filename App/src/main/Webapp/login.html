@@ -70,7 +70,7 @@ span.psw {
 </head>
 <body>
 
-<h2 style="text-align:center";>Formulario de Ingreso</h2>
+<h2 style="text-align:center";>¡Encuentra tu match!</h2>
 
 <form action="#!" method="post">
   <div class="imgcontainer">
@@ -78,21 +78,32 @@ span.psw {
   </div>
 
   <div class="container">
-    <label for="uname"><b>Usuario</b></label>
-    <input type="text" placeholder="Tu correo de la universidad" name="uname" required>
+    <label for="uname"><b>Carnet</b></label>
+    <input type="text" placeholder="Ingresa tu carnet" id="carnet" required>
 
-    <label for="psw"><b>Clave</b></label>
-    <input type="password" placeholder="Ingresa tu clave" name="psw" required>
         
-    <button type="submit">Vamos!</button>
-    <label>
-    </label>
+    <button type="button" id="btn_match">Vamos!</button>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button"  onclick="window.location='index.html';" class="cancelbtn">Cancel</button>
   </div>
+  <br/>
+  <div id="div-listado-match"></div>
+  <br/>
+  <script src="js/jquery.js"></script>
+  <script src="js/sb-admin-2.js"> </script>
+  <script>
+    var input = document.getElementById("carnet");
+    input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("btn_match").click();
+    }
+  });
+  </script> 
 </form>
+
 
 </body>
 </html>

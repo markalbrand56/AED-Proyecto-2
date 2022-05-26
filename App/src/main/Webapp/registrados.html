@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>UVG MATCH</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: sans-serif, Helvetica, monospace;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #FFA07A;
+  color: white;
+  padding: 14px 16px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 14px 16px;
+  background-color: #f44336;
+  width: 80%;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 20%;
+  border-radius: 30%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+.myDiv {
+  text-align: center;
+  width: auto;  
+}
+.myDiv2 {
+  text-align: center;
+  width: auto;
+  font-family: 'Courier New', Courier, monospace;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: inline-block;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: normal;
+  line-height: 1.2;
+}
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+</head>
+    <body>   
+        <h2 style="text-align:center";>¡Observa a los matchers!</h2>
+
+        <form action="#!" method="post">
+        <div class="imgcontainer">
+        <img src="assets/img/1.jpg" alt="Avatar" class="avatar">
+
+        <button type="button" id="btn_mostraractores">Mostrar Actores</button>
+        
+        
+        <script src="js/jquery.js"></script>
+        <script src="js/sb-admin-2.js"> </script>
+        
+        <button type="button"  onclick="window.location='index.html';" class="cancelbtn">Cancel</button>
+        
+        <br/>
+        <div class="myDiv">
+            <h2>Encontramos estos match para ti:</h2>
+        </div>
+        <div class="myDiv2">
+            <div id="div-listado-actores"></div>
+        </div>
+        <br/>
+
+        </div>
+        </form>
+    </body>
+</html>        

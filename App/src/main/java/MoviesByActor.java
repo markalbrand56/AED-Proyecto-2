@@ -58,7 +58,7 @@ public class MoviesByActor extends HttpServlet {
 				e.printStackTrace();
 			}
 	 	
-	 	myResponse.put("peliculas", PeliculasActor);
+	 	myResponse.put("recomendaciones", PeliculasActor);
 	 	out.println(myResponse);
 	 	out.flush();  
 	 	
