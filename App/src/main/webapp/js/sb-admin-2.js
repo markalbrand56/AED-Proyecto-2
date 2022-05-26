@@ -37,11 +37,11 @@
               url: '/HelloWorld/HelloServlet',
               success: function(data) {
                   //alert("Result" + data.resultado);
-                  var htmlActorsList = '<ul>';
+                  var htmlActorsList = '<ol id="lista4">';
                   $.each(data.usuarios, function(i,item){
                       htmlActorsList += '<li>' + item + '</li>';
                   });
-                  htmlActorsList += '</ul>';
+                  htmlActorsList += '</ol>';
                   $('#div-listado-actores').html("");
                   $('#div-listado-actores').append(htmlActorsList);
               }
@@ -60,11 +60,11 @@
 			url: '/HelloWorld/Recomendacion?carnet=' + $('#carnet').val(),
 			success: function(data) {
 				//alert("Result" + data.resultado);
-			    var htmlMatchList = '<ul>';
+			    var htmlMatchList = '<ol id="lista4">';
 				$.each(data.recomendaciones, function(i,item){
 					  htmlMatchList += '<li>' + item + '</li>';
 				});
-				htmlMatchList += '</ul>';
+				htmlMatchList += '</ol>';
 				$('#div-listado-match').html("");
 				$('#div-listado-match').append(htmlMatchList);
 			}
