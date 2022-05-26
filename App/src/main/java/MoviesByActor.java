@@ -43,7 +43,7 @@ public class MoviesByActor extends HttpServlet {
 	 	
 	 	JSONArray PeliculasActor = new JSONArray();
 	 	
-	 	String myActor = request.getParameter("actor_name");
+	 	String myActor = request.getParameter("carnet");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 	        {
 			 	LinkedList<String> myactors = greeter.getMoviesByActor(myActor);
@@ -58,8 +58,7 @@ public class MoviesByActor extends HttpServlet {
 				e.printStackTrace();
 			}
 	 	
-	 	myResponse.put("conteo", PeliculasActor.size()); //Guardo la cantidad de actores
-	 	myResponse.put("peliculas", PeliculasActor);
+	 	myResponse.put("recomendaciones", PeliculasActor);
 	 	out.println(myResponse);
 	 	out.flush();  
 	 	
