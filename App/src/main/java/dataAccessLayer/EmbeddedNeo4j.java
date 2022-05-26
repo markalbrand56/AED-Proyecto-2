@@ -56,34 +56,33 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
     
-    public LinkedList<String> getActors()
+    public LinkedList<String> getRegistrados()
     {
     	 try ( Session session = driver.session() )
          {
     		 
     		 
-    		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
+    		 LinkedList<String> registrados = session.readTransaction( new TransactionWork<LinkedList<String>>()
              {
                  @Override
                  public LinkedList<String> execute( Transaction tx )
                  {
                      Result result = tx.run( "MATCH (n:Persona) RETURN n.nombre");
-                     LinkedList<String> myactors = new LinkedList<String>();
+                     LinkedList<String> nombres = new LinkedList<String>();
                      List<Record> registros = result.list();
                      for (int i = 0; i < registros.size(); i++) {
                     	 //myactors.add(registros.get(i).toString());
-                    	 myactors.add(registros.get(i).get("n.nombre").asString());
+                    	 nombres.add(registros.get(i).get("n.nombre").asString());
                      }
                      
-                     return myactors;
+                     return nombres;
                  }
              } );
              
-             return actors;
+             return registrados;
          }
     }
     
-    // Lo que le gusta a Mark, la paloma.
     public LinkedList<String> getMoviesByActor(String actor)
     {
    	 try ( Session session = driver.session() )
