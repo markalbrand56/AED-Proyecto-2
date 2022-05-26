@@ -38,7 +38,7 @@
               success: function(data) {
                   //alert("Result" + data.resultado);
                   var htmlActorsList = '<ul>';
-                  $.each(data.actores, function(i,item){
+                  $.each(data.usuarios, function(i,item){
                       htmlActorsList += '<li>' + item + '</li>';
                   });
                   htmlActorsList += '</ul>';
@@ -61,10 +61,10 @@
 			success: function(data) {
 				//alert("Result" + data.resultado);
 			    var htmlMatchList = '<ul>';
-				$.each(data.peliculas, function(i,item){
+				$.each(data.recomendaciones, function(i,item){
 					  htmlMatchList += '<li>' + item + '</li>';
 				});
-				htmlMovieList += '</ul>';
+				htmlMatchList += '</ul>';
 				$('#div-listado-match').html("");
 				$('#div-listado-match').append(htmlMatchList);
 			}
