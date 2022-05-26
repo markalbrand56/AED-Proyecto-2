@@ -50,6 +50,29 @@
 
   );
 
+  	//Evento del botón que me devuelve el listado de películas de un determinado actor
+	$("#btn_match").click(function(){
+				
+		$.ajax( {
+			
+			type: "GET",
+			url: '/HelloWorld/Recomendacion?carnet=' + $('#carnet').val(),
+			success: function(data) {
+				//alert("Result" + data.resultado);
+			    var htmlMovieList = '<ul>';
+				$.each(data.peliculas, function(i,item){
+					  htmlMovieList += '<li>' + item + '</li>';
+				});
+				htmlMovieList += '</ul>';
+				$('#div-listado-actores').html("");
+				$('#div-listado-actores').append(htmlMovieList);
+			}
+		} );
+		
+		
+	});
+
+
 
 
 })(jQuery); // End of use strict
