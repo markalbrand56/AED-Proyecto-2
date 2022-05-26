@@ -14,8 +14,8 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 /**
  * @author Administrator
  *
@@ -56,57 +56,120 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
     
-    public LinkedList<String> getActors()
+    public LinkedList<String> getRegistrados()
     {
     	 try ( Session session = driver.session() )
          {
     		 
     		 
-    		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
+    		 LinkedList<String> registrados = session.readTransaction( new TransactionWork<LinkedList<String>>()
              {
                  @Override
                  public LinkedList<String> execute( Transaction tx )
                  {
                      Result result = tx.run( "MATCH (n:Persona) RETURN n.nombre");
-                     LinkedList<String> myactors = new LinkedList<String>();
+                     LinkedList<String> nombres = new LinkedList<String>();
                      List<Record> registros = result.list();
                      for (int i = 0; i < registros.size(); i++) {
                     	 //myactors.add(registros.get(i).toString());
-                    	 myactors.add(registros.get(i).get("n.nombre").asString());
+                    	 nombres.add(registros.get(i).get("n.nombre").asString());
                      }
                      
-                     return myactors;
+                     return nombres;
                  }
              } );
              
-             return actors;
+             return registrados;
          }
     }
     
-    public LinkedList<String> getMoviesByActor(String actor)
+    public LinkedList<String> getRecomendacion(String usuario)
     {
-   	 try ( Session session = driver.session() )
-        {
-   		 
-   		 
-   		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
-            {
-                @Override
-                public LinkedList<String> execute( Transaction tx )
-                {
-                    Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    LinkedList<String> myactors = new LinkedList<String>();
-                    List<Record> registros = result.list();
-                    for (int i = 0; i < registros.size(); i++) {
-                   	 //myactors.add(registros.get(i).toString());
-                   	 myactors.add(registros.get(i).get("actorMovies.title").asString());
-                    }
-                    
-                    return myactors;
+
+		 try ( Session session = driver.session() )
+		    {
+
+            HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
+            LinkedList<String> ids = getRegistrados();
+
+            for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
+                if(ids.get(i) == usuario){
+                    ids.remove(i);
                 }
-            } );
-            
-            return actors;
+            }
+
+            for (int i = 0; i < ids.size(); i++) { // Hacer el hashmap
+                if (!ids.get(i).equals(usuario)){
+                    hashmapDeQuimica.put(ids.get(i), 0);
+                }
+            }
+			 
+			 // Obtener los gustos de la persona para compararlos con los demás.
+			 LinkedList<String> gustosUsuario = session.readTransaction( new TransactionWork<LinkedList<String>>()
+		        {
+		            @Override
+		            public LinkedList<String> execute( Transaction tx )
+		            {
+		                Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+		            LinkedList<String> gustos = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
+		            List<Record> registros = result.list();
+		            for (int i = 0; i < registros.size(); i++) {
+		           	 //myactors.add(registros.get(i).toString());
+                        gustos.add(registros.get(i).get("gustos.titulo").asString());
+		            }
+		
+		            return gustos; //devuelve los gustos de un usuario.
+		        }
+		    } );
+
+            for (int i = 0; i < ids.size(); i++) {
+
+                String nombreRegistrado = ids.get(i);
+
+                LinkedList<String> gustosDeRegistrado = session.readTransaction( new TransactionWork<LinkedList<String>>()
+                {
+                    @Override
+                    public LinkedList<String> execute( Transaction tx )
+                    {
+                        Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistrado + "\"})-[:LE_GUSTA]->(gustos) RETURN gustos.titulo");
+                        LinkedList<String> gustos = new LinkedList<String>(); // Lo que le gusta a la persona, si es Mark, la paloma.
+                        List<Record> registros = result.list();
+                        for (int i = 0; i < registros.size(); i++) {
+                            //myactors.add(registros.get(i).toString());
+                            gustos.add(registros.get(i).get("gustos.titulo").asString());
+                        }
+
+                        return gustos; //devuelve los gustos de un usuario.
+                    }
+                } );
+
+                for (int j = 0; j < gustosUsuario.size(); j++) {
+                    if(gustosUsuario.get(j) == gustosDeRegistrado.get(j)){
+                        //hashmapDeQuimica.get(ids.get(i))
+                        int puntuacion = hashmapDeQuimica.get(ids.get(i));
+                        puntuacion = puntuacion++;
+                        hashmapDeQuimica.put(ids.get(i), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                    }
+                }
+
+            }
+
+            LinkedList<String> recomendaciones = new LinkedList<>();
+
+            // obtener el valor mas alto de las values del hashmap.
+            int max = Collections.max(hashmapDeQuimica.values());
+            for (Map.Entry<String, Integer> entry : hashmapDeQuimica.entrySet()) {
+                if (entry.getValue() == max) {
+                    recomendaciones.add(entry.getKey());
+                }
+            }
+
+
+
+
+
+
+            return recomendaciones;
         }
    }
 

@@ -19,7 +19,7 @@ import org.json.simple.JSONArray;
 /**
  * Servlet implementation class MoviesByActor
  */
-@WebServlet("/MoviesByActor")
+@WebServlet("/Recomendacion")
 public class MoviesByActor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,16 +41,16 @@ public class MoviesByActor extends HttpServlet {
 	 	response.setCharacterEncoding("UTF-8");
 	 	JSONObject myResponse = new JSONObject();
 	 	
-	 	JSONArray PeliculasActor = new JSONArray();
+	 	JSONArray recomendaciones = new JSONArray();
 	 	
-	 	String myActor = request.getParameter("carnet");
+	 	String usuario = request.getParameter("carnet");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 	        {
-			 	LinkedList<String> myactors = greeter.getMoviesByActor(myActor);
+			 	LinkedList<String> usuariosRecomendados = greeter.getRecomendacion(usuario);
 			 	
-			 	for (int i = 0; i < myactors.size(); i++) {
+			 	for (int i = 0; i < usuariosRecomendados.size(); i++) {
 			 		 //out.println( "<p>" + myactors.get(i) + "</p>" );
-			 		PeliculasActor.add(myactors.get(i));
+			 		recomendaciones.add(usuariosRecomendados.get(i));
 			 	}
 	        	
 	        } catch (Exception e) {
@@ -58,7 +58,7 @@ public class MoviesByActor extends HttpServlet {
 				e.printStackTrace();
 			}
 	 	
-	 	myResponse.put("recomendaciones", PeliculasActor);
+	 	 myResponse.put("recomendaciones", recomendaciones);
 	 	out.println(myResponse);
 	 	out.flush();  
 	 	
