@@ -53,10 +53,86 @@
 		
 	});
 
+    var carnet = "";
+    var sexo = "";
+    var nombre = "";
+    var carrera = "";
+    var edad = "";
+    var email = "";
+    var instagram = "";
+    var hobbie = "";
+    var comida = "";
+    var lugar = "";
+    var musica = "";
+    var pelicula = "";
     $("input[name='carnet']" ).on('change', function () {
-        var carnet = $(this).val();
-        alert(carnet);
+        carnet = $(this).val();
+        alert(carnet); 
     });
+    
+    $("input[name='nombre']" ).on('change', function () {
+        nombre = $(this).val();
+    });
+
+    $("input[name='carrera']" ).on('change', function () {
+        carrera = $(this).val();
+    });
+
+    $("input[name='edad']" ).on('change', function () {
+        edad = $(this).val();
+    });
+
+    $("input[name='email']" ).on('change', function () {
+        email = $(this).val();
+    });
+
+    $("input[name='instagram']" ).on('change', function () {
+        instagram = $(this).val();
+    });
+
+    $("input[name='sexo']" ).change(function () {
+        sexo = $(this).attr("id");
+    });
+
+    $("input[name='hobbies']" ).on('change', function () {
+        hobbie = $(this).attr("id");
+    });
+
+    $("input[name='comida']" ).on('change', function () {
+        comida = $(this).attr("id");
+    });
+
+    $("input[name='lugar']" ).on('change', function () {
+        lugar = $(this).attr("id");
+    });
+
+    $("input[name='musica']" ).on('change', function () {
+        musica = $(this).attr("id");
+    });
+
+    $("input[name='pelicula']" ).on('change', function () {
+        pelicula = $(this).attr("id");
+    });
+
+    $("#regForm").submit(function() {
+        alert(carnet);
+        $.ajax({
+            type: "POST",
+            url: '/HelloWorld/Register',
+            success: function(data) {
+				//alert("Result" + data.resultado);
+			    var htmlMatchList = '<ol id="lista4">';
+				$.each(data.resultado, function(i,item){
+					  htmlMatchList += '<li>' + item + '</li>';
+				});
+				htmlMatchList += '</ol>';
+                $('#titulo').html("");
+				$('#titulo').append("<h3>¡Estos son tus matchs!</h3>");
+				$('#div-listado-match').html("");
+				$('#div-listado-match').append(htmlMatchList);
+			}
+        });
+    }); 
 
 
 

@@ -123,163 +123,135 @@ button:hover {
   opacity: 0.8;
 }
 
-#prevBtn {
-  background-color: #bbbbbb;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;  
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
-}
-
-.step.active {
-  opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-  background-color: #04AA6D;
-}
 </style>
 <body>
 
-<form id="regForm" action="mensajesucces.html">
+<form id="regForm" action="login.html">
   <h1>Registro:</h1>
   <!-- One "tab" for each step in the form: -->
   <div class="tab">Información Personal:
-    <p><input placeholder="Nombre" oninput="this.className = ''" name="nombre"></p>
-    <p><input placeholder="Carrera" oninput="this.className = ''" name="carrera"></p>
-    <p><input placeholder="Edad" oninput="this.className = ''" name="Edad"></p>
-    <p><input placeholder="Email" oninput="this.className = ''" name="Email"></p>
-    <p><input placeholder="Carrera" oninput="this.className = ''" name="carrera"></p>
-    <p><input placeholder="Username en instagram" oninput="this.className = ''" name="instagram"></p>
+    <p><input placeholder="carnet" oninput="this.className = ''" name="carnet" required></p>
+    <p><input placeholder="Nombre" oninput="this.className = ''" name="nombre" required></p>
+    <p><input placeholder="Carrera" oninput="this.className = ''" name="carrera" required></p>
+    <p><input placeholder="Edad" oninput="this.className = ''" name="edad" required></p>
+    <p><input placeholder="Email" oninput="this.className = ''" name="email" required></p>
+    <p><input placeholder="Username en instagram" oninput="this.className = ''" name="instagram" required></p>
     <p><label>Ingresa tu sexo</label></p>
     <p><label class="container">Hombre
-      <input type="radio" checked="checked" name="sexo">
+      <input type="radio" name="sexo" id="hombre" required>
       <span class="checkmark"></span></label></p>
-  <p><label class="container">Mujer
-      <input type="radio" name="sexo"">
+    <p><label class="container">Mujer
+      <input type="radio" name="sexo" id="mujer">
       <span class="checkmark"></span></label></p>
-  </div>
-  <div class="tab">
     <p><div>Marca tus hobbies favoritos: </div></p>  
     <p><label class="container">Salir con amigos
-        <input type="radio" checked="checked" name="hobbies">
+        <input type="radio" name="hobbies" id="amigos" required>
         <span class="checkmark"></span></label></p>
     <p><label class="container">Jugar videojuegos
-        <input type="radio"  name="hobbies">
+        <input type="radio"  name="hobbies" id="videojuegos">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Ir de fiesta
-        <input type="radio"  name="hobbies">
+        <input type="radio"  name="hobbies" id="fista">
         <span class="checkmark"></span></label></p>
     <p><label class="container">Hacer deporte
-        <input type="radio"  name="hobbies">
+        <input type="radio"  name="hobbies" id="deporte">
         <span class="checkmark"></span></label></p>    
-    <p><label class="container">Ver peliculas o series
-        <input type="radio"  name="hobbies">
+    <p><label class="container">Ver peliculas
+        <input type="radio"  name="hobbies" id="peliculas">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Viajar
-        <input type="radio"  name="hobbies">
+        <input type="radio"  name="hobbies" id="viajar">
         <span class="checkmark"></span></label></p>  
     <p><div>Marca tus comidas favoritas: </div></p>  
     <p><label class="container">Pizza
-        <input type="radio" checked="checked" name="comida">
+        <input type="radio" name="comida" id="pizza" required>
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Sushi
-        <input type="radio"  name="comida">
+        <input type="radio"  name="comida" id="sushi">
         <span class="checkmark"></span></label></p>
     <p><label class="container">Hamburguesas
-        <input type="radio"  name="comida">
+        <input type="radio"  name="comida" id="hamburgesas" >
         <span class="checkmark"></span></label></p>    
     <p><label class="container">Tacos
-        <input type="radio"  name="comida">
+        <input type="radio"  name="comida" id="tacos">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Carnes
-        <input type="radio"  name="comida">
+        <input type="radio"  name="comida" id="carnes">
         <span class="checkmark"></span></label></p>  
     <p><div>Marca tus lugares favoritos: </div></p>  
     <p><label class="container">Cine
-        <input type="radio" checked="checked" name="lugar">
+        <input type="radio" name="lugar" id="cine" required>
         <span class="checkmark"></span></label></p>
     <p><label class="container">Restaurantes
-        <input type="radio"  name="lugar">
+        <input type="radio"  name="lugar" id="restaurantes">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Bares
-        <input type="radio"  name="lugar">
+        <input type="radio"  name="lugar" id="bares">
         <span class="checkmark"></span></label></p>
     <p><label class="container">Teatro
-        <input type="radio"  name="lugar">
+        <input type="radio"  name="lugar" id="teatro">
         <span class="checkmark"></span></label></p>    
     <p><label class="container">Playa
-        <input type="radio" name="lugar">
+        <input type="radio" name="lugar" id="playa">
         <span class="checkmark"></span></label></p>  
-  </div>
-  <div class="tab">
+
     <p><div>Marca tus generos de musica favoritos: </div></p>  
     <p><label class="container">Reggaeton
-        <input type="radio" checked="checked" name="musica">
+        <input type="radio" name="musica" id="reggaeton" required>
         <span class="checkmark"></span></label></p>
     <p><label class="container">Jazz
-        <input type="radio" name="musica">
+        <input type="radio" name="musica" id="jazz">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Rock
-        <input type="radio"  name="musica">
+        <input type="radio"  name="musica" id="rock">
         <span class="checkmark"></span></label></p>
     <p><label class="container">Pop
-        <input type="radio"  name="musica">
+        <input type="radio"  name="musica" id="pop">
         <span class="checkmark"></span></label></p>    
     <p><label class="container">Alternativo
-        <input type="radio"  name="musica">
+        <input type="radio"  name="musica" id="alternativo">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Trap
-        <input type="radio" name="musica">
+        <input type="radio" name="musica" id="trap">
         <span class="checkmark"></span></label></p> 
     <p><label class="container">Rap
-        <input type="radio"  name="musica">
+        <input type="radio"  name="musica" id="rap">
         <span class="checkmark"></span></label></p> 
     <p><label class="container">Cumbia
-        <input type="radio"  name="musica">
+        <input type="radio"  name="musica" id="cumbia">
         <span class="checkmark"></span></label></p>  
     <p><div>Marca tus generos de peliculas favoritas: </div></p>  
     <p><label class="container">Romanticas
-        <input type="radio"  checked="checked" name="pelicula">
+        <input type="radio" name="pelicula" id="romanticas" required>
         <span class="checkmark"></span></label></p>
     <p><label class="container">Terror
-        <input type="radio"  name="pelicula">
+        <input type="radio"  name="pelicula" id="terror">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Ficción
-        <input type="radio"  name="pelicula">
+        <input type="radio"  name="pelicula" id="ficcion">
         <span class="checkmark"></span></label></p>
     <p><label class="container">Accion
-        <input type="radio" name="pelicula">
+        <input type="radio" name="pelicula" id="accion">
         <span class="checkmark"></span></label></p>    
     <p><label class="container">Comedia
-        <input type="radio" name="pelicula">
+        <input type="radio" name="pelicula" id="comedia">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Ciencia ficción
-        <input type="radio"  name="pelicula">
+        <input type="radio"  name="pelicula" id="ficcion">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Documentales
-        <input type="radio" name="pelicula">
+        <input type="radio" name="pelicula" id="documentakes">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Musicales
-        <input type="radio" name="pelicula">
+        <input type="radio" name="pelicula" id="musicales">
         <span class="checkmark"></span></label></p>  
     <p><label class="container">Aventura
-        <input type="radio" name="pelicula">
+        <input type="radio" name="pelicula" id="aventura">
         <span class="checkmark"></span></label></p>  
-  </div>    
+   </div> 
   <div style="overflow:auto;">
     <div style="float:right;">
-      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <button type="submit" id="submit">Submit</button>
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
@@ -290,7 +262,8 @@ button:hover {
     <span class="step"></span>
   </div>
 </form>
-
+<script src="js/jquery.js"></script>
+<script src="js/sb-admin-2.js"> </script>
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
@@ -305,32 +278,6 @@ function showTab(n) {
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  //... and run a function that will display the correct step indicator:
-  fixStepIndicator(n)
-}
-
-function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form...
-  if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
 }
 
 function validateForm() {
@@ -353,16 +300,6 @@ function validateForm() {
     document.getElementsByClassName("step")[currentTab].className += " finish";
   }
   return valid; // return the valid status
-}
-
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class on the current step:
-  x[n].className += " active";
 }
 </script>
 
