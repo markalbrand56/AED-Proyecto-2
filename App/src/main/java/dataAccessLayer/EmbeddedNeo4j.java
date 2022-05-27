@@ -303,12 +303,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
                      //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
                      String cadena = stringCreateProfile("00000", "carrera", "10", "email", "instagram", "nombre", "sexo");
-                     Result result = tx.run(cadena);
-                    Result result1 = tx.run(createGusto("00000", "Pizza"));
-                    Result result2 = tx.run(createGusto("00000", "Playa"));
-                    Result result3 = tx.run(createGusto("00000", "Bar"));
-                    Result result4 = tx.run(createGusto("00000", "Cine"));
-                    Result result5 = tx.run(createGusto("00000", "Jazz"));
+                     tx.run(cadena);
+                    tx.run(createGusto("00000", "Pizza"));
+                    tx.run(createGusto("00000", "Playa"));
+                    tx.run(createGusto("00000", "Bar"));
+                    tx.run(createGusto("00000", "Cine"));
+                    tx.run(createGusto("00000", "Jazz"));
 
                      return true;
                  }
