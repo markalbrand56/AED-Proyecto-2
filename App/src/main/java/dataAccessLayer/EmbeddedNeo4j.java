@@ -14,6 +14,7 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -86,20 +87,33 @@ public class EmbeddedNeo4j implements AutoCloseable{
     public LinkedList<String> getRecomendacion(String usuario)
     {
 
-		 try ( Session session = driver.session() )
+    	try ( Session session = driver.session() )
 		    {
 
-            HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
-            LinkedList<String> ids = getRegistrados();
+			HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
+			LinkedList<String> ids = getRegistrados();
+            
+			// Obtener los gustos de la persona para compararlos con los demÃ¡s.
+			String nombreUsuario = session.readTransaction( new TransactionWork<String>()
+	        	{
+		            @Override
+		            public String execute( Transaction tx )
+		            {
+		                Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.nombre");		         
+		                List<Record> registros = result.list();
+		                String nombre = registros.get(0).get("p.nombre").asString();
+		                return nombre; //devuelve los gustos de un usuario.
+		            }
+		    } );
 
             for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
-                if(ids.get(i) == usuario){
+                if(ids.get(i).equals(nombreUsuario)){
                     ids.remove(i);
                 }
             }
 
             for (int i = 0; i < ids.size(); i++) { // Hacer el hashmap
-                if (!ids.get(i).equals(usuario)){
+                if (!ids.get(i).equals(nombreUsuario)){
                     hashmapDeQuimica.put(ids.get(i), 0);
                 }
             }
@@ -122,9 +136,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		        }
 		    } );
 
-            for (int i = 0; i < ids.size(); i++) {
+            for (int usuarioActual = 0; usuarioActual < ids.size(); usuarioActual++) {
 
-                String nombreRegistrado = ids.get(i);
+                String nombreRegistrado = ids.get(usuarioActual);
 
                 LinkedList<String> gustosDeRegistrado = session.readTransaction( new TransactionWork<LinkedList<String>>()
                 {
@@ -144,12 +158,14 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 } );
 
                 for (int j = 0; j < gustosUsuario.size(); j++) {
-                    if(gustosUsuario.get(j) == gustosDeRegistrado.get(j)){
-                        //hashmapDeQuimica.get(ids.get(i))
-                        int puntuacion = hashmapDeQuimica.get(ids.get(i));
-                        puntuacion = puntuacion++;
-                        hashmapDeQuimica.put(ids.get(i), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
-                    }
+                	for(int k = 0; k < gustosDeRegistrado.size(); k++) {
+                		if(gustosUsuario.get(j).equals(gustosDeRegistrado.get(k))){
+                			//hashmapDeQuimica.get(ids.get(i))
+                			int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
+                			puntuacion += 1;
+                			hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                		}
+                	}
                 }
 
             }
@@ -159,16 +175,15 @@ public class EmbeddedNeo4j implements AutoCloseable{
             // obtener el valor mas alto de las values del hashmap.
             int max = Collections.max(hashmapDeQuimica.values());
             for (Map.Entry<String, Integer> entry : hashmapDeQuimica.entrySet()) {
-                if (entry.getValue() == max) {
+                if (entry.getValue() == max && entry.getValue() !=0) {
                     recomendaciones.add(entry.getKey());
                 }
             }
-
-
-
-
-
-
+            
+            if(recomendaciones.size() == 0) {
+            	recomendaciones.add("No se encontró un Match");
+            }
+            
             return recomendaciones;
         }
    }
