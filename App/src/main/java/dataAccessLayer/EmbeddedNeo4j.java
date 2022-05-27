@@ -16,6 +16,8 @@ import static org.neo4j.driver.Values.parameters;
 
 import java.util.*;
 
+
+
 /**
  * @author Administrator
  *
@@ -297,7 +299,10 @@ public class EmbeddedNeo4j implements AutoCloseable{
                  @Override
                  public LinkedList<String> execute( Transaction tx )
                  {
-                     Result result = tx.run( "MATCH (n:Persona) RETURN n.nombre");
+
+                     //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
+                     String cadena = stringCreateProfile("00000", "carrera", "10", "email", "instagram", "nombre", "sexo");
+                     Result result = tx.run(cadena);
                      LinkedList<String> nombres = new LinkedList<String>();
                      List<Record> registros = result.list();
                      for (int i = 0; i < registros.size(); i++) {
@@ -312,5 +317,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
              return false;
          }
     }
-    
+
+    public String stringCreateProfile(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo) {
+        String string =  "CREATE (" + "C" + carnet + ":Persona {carnet: '" + carnet +  "', nombre:'" + nombre + "', email:'" + email + "', instagram:'" + instagram + "', carrera:'" + carrera + "', sexo:'" + sexo + "', edad:'" + edad + "'})";
+        return string;
+    }
+
+
+
 }
