@@ -14,7 +14,7 @@ import dataAccessLayer.EmbeddedNeo4j;
 
 import org.json.simple.JSONArray;
 
-
+@WebServlet("/Register")
 public class Register extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -41,12 +41,15 @@ public class Register extends HttpServlet{
 	 	String instagram = request.getParameter("instagram");
 	 	String nombre = request.getParameter("nombre");
 	 	String sexo = request.getParameter("sexo");
-	 	String signo = request.getParameter("signo");
-	 	String zona = request.getParameter("zona");
+	 	String gusto1 = request.getParameter("gusto1");
+	 	String gusto2 = request.getParameter("gusto2");
+	 	String gusto3 = request.getParameter("gusto3");
+	 	String gusto4 = request.getParameter("gusto4");
+	 	String gusto5 = request.getParameter("gusto5");
 	 	
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 	        {
-			 	boolean resultado = greeter.registrarNuevo(carnet, carrera, edad, email, instagram, nombre, sexo, signo, zona);
+			 	boolean resultado = greeter.registrarNuevo(carnet, carrera, edad, email, instagram, nombre, sexo, gusto1, gusto2, gusto3, gusto4, gusto5);
 			 	String registro = "";
 			 	
 			 	if(resultado) {

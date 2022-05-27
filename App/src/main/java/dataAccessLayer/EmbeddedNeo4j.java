@@ -286,7 +286,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
    }
     
-    public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String signo, String zona)
+    public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String gusto1, String gusto2, String gusto3, String gusto4, String gusto5)
     {
     	 try ( Session session = driver.session() )
          {

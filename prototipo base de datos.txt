@@ -23,13 +23,40 @@ CREATE (C21199:Persona {carnet: '21199', nombre:'Jimena Hernández', email:'her2
 
 CREATE (Pizza:Gusto {titulo:'Pizza'})
 CREATE (Sushi:Gusto {titulo:'Sushi'})
-CREATE (Amigos:Gusto {titulo:'Salir con amigos'})
-CREATE (Videojuegos:Gusto {titulo:'Jugar videojuegos'})
-CREATE (Cine:Gusto {titulo:'Cine'})
+CREATE (Hamburguesas:Gusto {titulo:'Hamburguesas'})
+CREATE (Tacos:Gusto {titulo:'Tacos'})
+CREATE (Tipica:Gusto {titulo:'Tipica'})
+CREATE (Carnes:Gusto {titulo:'Carnes'})
+
+CREATE (Amigos:Gusto {titulo:'Amigos'})
+CREATE (Videojuegos:Gusto {titulo:'Videojuegos'})
+CREATE (Fiesta:Gusto {titulo:'Fiesta'})
+CREATE (Deporte:Gusto {titulo:'Deporte'})
+CREATE (Peliculas:Gusto {titulo:'Peliculas'})
+CREATE (Viajar:Gusto {titulo:'Viajar'})
+
+CREATE (Playa:Gusto {titulo:'Playa'})
+CREATE (Restaurantes:Gusto {titulo:'Restaurantes'})
+CREATE (Bar:Gusto {titulo:'Bar'})
+CREATE (Teatro:Gusto {titulo:'Teatro'})
+
 CREATE (Reggaeton:Gusto {titulo:'Reggaeton'})
 CREATE (Pop:Gusto {titulo:'Pop'})
+CREATE (Indie:Gusto {titulo:'Indie'})
+CREATE (Jazz:Gusto {titulo:'Jazz'})
+CREATE (Rock:Gusto {titulo:'Rock'})
+CREATE (Trap:Gusto {titulo:'Trap'})
+CREATE (Cumbia:Gusto {titulo:'Cumbia'})
+CREATE (Rap:Gusto {titulo:'Rap'})
+
 CREATE (Terror:Gusto {titulo:'Terror'})
 CREATE (Románticas:Gusto {titulo:'Románticas'})
+CREATE (Ficción:Gusto {titulo:'Ficción'})
+CREATE (Thriller:Gusto {titulo:'Thriller'})
+CREATE (Musicales:Gusto {titulo:'Musicales'})
+CREATE (Documentales:Gusto {titulo:'Documentales'})
+CREATE (Aventuras:Gusto {titulo:'Aventuras'})
+
 
 CREATE
 (C21004)-[:LE_GUSTA {gusta:'si'}]->(Pizza),
