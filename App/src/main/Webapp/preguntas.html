@@ -158,15 +158,14 @@ button:hover {
     <p><input placeholder="Nombre" oninput="this.className = ''" name="nombre"></p>
     <p><input placeholder="Apellido" oninput="this.className = ''" name="apellido"></p>
     <p><input placeholder="Zona de residencia" oninput="this.className = ''" name="residencia"></p>
-    <p><input placeholder="Signo zodiacal" oninput="this.className = ''" name="signo"></p>
     <p><input placeholder="Username en redes sociales" oninput="this.className = ''" name="userredes"></p>
   </div>
   <div class="tab">¿Cual es tu sexo?
     <p><label class="container">Hombre
-        <input type="checkbox">
+        <input type="radio" id="hombre" name="sexo" value="Hombre">
         <span class="checkmark"></span></label></p>
     <p><label class="container">Mujer
-        <input type="checkbox">
+        <input type="radio">
         <span class="checkmark"></span></label></p>
     <p><div>¿Con que genero quieres hacer match?</div></p>  
     <p><label class="container">Hombres
