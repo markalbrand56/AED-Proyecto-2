@@ -295,7 +295,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
     	 try ( Session session = driver.session() )
          {
              boolean registrados = false;
-    		  registrados = session.readTransaction( new TransactionWork<Boolean>()
+    		  registrados = session.writeTransaction( new TransactionWork<Boolean>()
              {
                  @Override
                  public Boolean execute(Transaction tx )
