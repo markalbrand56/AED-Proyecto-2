@@ -302,7 +302,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                  {
 
                      //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
-                     String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
+                     String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
                      Result result = tx.run(cadena);
                     Result result1 = tx.run(createGusto("00000", "Pizza"));
                     Result result2 = tx.run(createGusto("00000", "Playa"));
@@ -321,6 +321,8 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
     public String stringCreateProfile(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo) {
+        //CREATE                          (C21004     :Persona {carnet: '    21004', nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
+        // CREATE (C21004:Persona {carnet: '21004', nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
         String string =  "CREATE (" + "C" + carnet + ":Persona {carnet: '" + carnet +  "', nombre:'" + nombre + "', email:'" + email + "', instagram:'" + instagram + "', carrera:'" + carrera + "', sexo:'" + sexo + "', edad:'" + edad + "'})";
         return string;
     }
