@@ -191,7 +191,8 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 		}
                 	}
                 }
-                
+
+                // Edad del registrado
                 String carreraRegistrado = session.readTransaction( new TransactionWork<String>()
 	        	{
 		            @Override
@@ -209,6 +210,27 @@ public class EmbeddedNeo4j implements AutoCloseable{
         			puntuacion += 1;
         			hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
                 }
+
+                // sexo del registrado
+                String sexoRegistrado = session.readTransaction( new TransactionWork<String>()
+                    {
+                    @Override
+                                                                                                                            public String execute( Transaction tx )
+                        {
+                            Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistrado + "\"}) RETURN p.sexo");
+                            List<Record> registros = result.list();
+                            String nombre = registros.get(0).get("p.sexo").asString();
+                            return nombre; //devuelve los gustos de un usuario.
+                        }
+                    } );
+
+                if(!sexoRegistrado.equals(sexoUsuario)) {
+                    	int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
+                        puntuacion += 1;
+                        hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                }
+
+                // Edad del registrado
                 
                 
                 
@@ -226,7 +248,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             }
             
             if(recomendaciones.size() == 0) {
-            	recomendaciones.add("No se encontró un Match");
+            	recomendaciones.add("No se encontrï¿½ un Match");
             }
             
             return recomendaciones;
