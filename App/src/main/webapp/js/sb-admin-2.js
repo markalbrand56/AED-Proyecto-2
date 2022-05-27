@@ -53,6 +53,11 @@
 		
 	});
 
+    $("input[name='carnet']" ).on('change', function () {
+        var carnet = $(this).val();
+        alert(carnet);
+    });
+
 
 
 })(jQuery); // End of use strict
