@@ -290,36 +290,44 @@ public class EmbeddedNeo4j implements AutoCloseable{
     
     public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String gusto1, String gusto2, String gusto3, String gusto4, String gusto5)
     {
+
+        Boolean flag = false;
     	 try ( Session session = driver.session() )
          {
-    		 
-    		 
-    		 LinkedList<String> registrados = session.readTransaction( new TransactionWork<LinkedList<String>>()
+             boolean registrados = false;
+    		  registrados = session.readTransaction( new TransactionWork<Boolean>()
              {
                  @Override
-                 public LinkedList<String> execute( Transaction tx )
+                 public Boolean execute(Transaction tx )
                  {
 
                      //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
                      String cadena = stringCreateProfile("00000", "carrera", "10", "email", "instagram", "nombre", "sexo");
                      Result result = tx.run(cadena);
-                     LinkedList<String> nombres = new LinkedList<String>();
-                     List<Record> registros = result.list();
-                     for (int i = 0; i < registros.size(); i++) {
-                    	 //myactors.add(registros.get(i).toString());
-                    	 nombres.add(registros.get(i).get("n.nombre").asString());
-                     }
-                     
-                     return nombres;
+                    Result result1 = tx.run(createGusto("00000", "Pizza"));
+                    Result result2 = tx.run(createGusto("00000", "Playa"));
+                    Result result3 = tx.run(createGusto("00000", "Bar"));
+                    Result result4 = tx.run(createGusto("00000", "Cine"));
+                    Result result5 = tx.run(createGusto("00000", "Jazz"));
+
+                     return true;
                  }
+
+
              } );
-             
-             return false;
+
+              return true; // pls
          }
     }
 
     public String stringCreateProfile(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo) {
         String string =  "CREATE (" + "C" + carnet + ":Persona {carnet: '" + carnet +  "', nombre:'" + nombre + "', email:'" + email + "', instagram:'" + instagram + "', carrera:'" + carrera + "', sexo:'" + sexo + "', edad:'" + edad + "'})";
+        return string;
+    }
+
+    public String createGusto(String carnet, String gusto) {
+        // (C21004)-[:LE_GUSTA {gusta:'si'}]->(Pizza),
+        String string = "MATCH (p.Persona), (g.Gusto) WHERE p.carnet = '" + carnet + "' AND (g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
         return string;
     }
 
