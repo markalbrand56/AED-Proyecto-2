@@ -16,10 +16,10 @@ Campos
 
 */
 
-CREATE (C21004:Persona {nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
-CREATE (C21242:Persona {nombre:'Alejandro Azurdia', email:'azu21242@uvg.edu.gt', instagram:'aleazurdia', carrera:'Computación', sexo:'masculino', signo:'aries', zona:'5', edad:'20'})
-CREATE (C21146:Persona {nombre:'Diego Morales', email:'mor21146@uvg.edu.gt', instagram:'diego_0000', carrera:'Computación', sexo:'masculino', signo:'escorpio', zona:'16', edad:'19'})
-CREATE (C21199:Persona {nombre:'Jimena Hernández', email:'her21199@uvg.edu.gt', instagram:'kojimena', carrera:'Computación', sexo:'femenino', signo:'capricornio', zona:'15', edad:'18'})
+CREATE (C21004:Persona {carnet: '21004', nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
+CREATE (C21242:Persona {carnet: '21242', nombre:'Alejandro Azurdia', email:'azu21242@uvg.edu.gt', instagram:'aleazurdia', carrera:'Computación', sexo:'masculino', signo:'aries', zona:'5', edad:'20'})
+CREATE (C21146:Persona {carnet: '21146', nombre:'Diego Morales', email:'mor21146@uvg.edu.gt', instagram:'diego_0000', carrera:'Computación', sexo:'masculino', signo:'escorpio', zona:'16', edad:'19'})
+CREATE (C21199:Persona {carnet: '21199', nombre:'Jimena Hernández', email:'her21199@uvg.edu.gt', instagram:'kojimena', carrera:'Computación', sexo:'femenino', signo:'capricornio', zona:'15', edad:'18'})
 
 CREATE (Pizza:Gusto {titulo:'Pizza'})
 CREATE (Sushi:Gusto {titulo:'Sushi'})
