@@ -114,10 +114,10 @@
         pelicula = $(this).attr("id");
     });
 
-    $("#regForm").submit(function() {
+    $("#submit").click(function() {
         alert(carnet);
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: '/HelloWorld/Register',
             success: function(data) {
 				//alert("Result" + data.resultado);
