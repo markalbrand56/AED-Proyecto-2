@@ -14,7 +14,6 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
-import java.io.PrintWriter;
 import java.util.*;
 
 /**
