@@ -297,7 +297,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Boolean execute(Transaction tx) {
 
-                    String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
+                    String cadena = stringCreateProfile("00000", carrera, edad, email, instagram, nombre, sexo);
                     //String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
                     Result result = tx.run(cadena);
                     return true;
@@ -314,59 +314,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Boolean execute(Transaction tx) {
 
-                    String cadena = createGusto(carnet, gusto1);
-                    Result result = tx.run(cadena);
-                    return true;
-                }
-            });
-        }
-
-        try (Session session = driver.session()) {
-            boolean registrados = false;
-            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
-                @Override
-                public Boolean execute(Transaction tx) {
-
-                    String cadena = createGusto(carnet, gusto2);
-                    Result result = tx.run(cadena);
-                    return true;
-                }
-            });
-        }
-
-        try (Session session = driver.session()) {
-            boolean registrados = false;
-            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
-                @Override
-                public Boolean execute(Transaction tx) {
-
-                    String cadena = createGusto(carnet, gusto3);
-                    Result result = tx.run(cadena);
-                    return true;
-                }
-            });
-        }
-
-        try (Session session = driver.session()) {
-            boolean registrados = false;
-            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
-                @Override
-                public Boolean execute(Transaction tx) {
-
-                    String cadena = createGusto(carnet, gusto4);
-                    Result result = tx.run(cadena);
-                    return true;
-                }
-            });
-        }
-
-        try (Session session = driver.session()) {
-            boolean registrados = false;
-            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
-                @Override
-                public Boolean execute(Transaction tx) {
-
-                    String cadena = createGusto(carnet, gusto5);
+                    String cadena = createGusto("00000", "Pollo");
                     Result result = tx.run(cadena);
                     return true;
                 }
