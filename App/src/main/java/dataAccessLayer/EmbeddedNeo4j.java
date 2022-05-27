@@ -128,6 +128,19 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	            }
 	    } );
 			
+			String edadTemp = session.readTransaction( new TransactionWork<String>()
+        	{
+	            @Override
+	            public String execute( Transaction tx )
+	            {
+	                Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.edad");		         
+	                List<Record> registros = result.list();
+	                String nombre = registros.get(0).get("p.edad").asString();
+	                return nombre; //devuelve los gustos de un usuario.
+	            }
+	    } );
+			int edadUsuario = Integer.parseInt(edadTemp);
+			
 			
 
             for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
@@ -231,6 +244,24 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 }
 
                 // Edad del registrado
+                String edadTemp2 = session.readTransaction( new TransactionWork<String>()
+            	{
+    	            @Override
+    	            public String execute( Transaction tx )
+    	            {
+    	                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistrado + "\"}) RETURN p.edad");		         
+    	                List<Record> registros = result.list();
+    	                String nombre = registros.get(0).get("p.edad").asString();
+    	                return nombre; //devuelve los gustos de un usuario.
+    	            }
+    	    } );
+    			int edadRegistrado = Integer.parseInt(edadTemp);
+    			
+    			if((edadRegistrado - edadUsuario) <= 2 && (edadRegistrado - edadUsuario) >= -2) {
+    				int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
+                    puntuacion += 1;
+                    hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+    			}
                 
                 
                 
@@ -254,5 +285,32 @@ public class EmbeddedNeo4j implements AutoCloseable{
             return recomendaciones;
         }
    }
-
+    
+    public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String signo, String zona)
+    {
+    	 try ( Session session = driver.session() )
+         {
+    		 
+    		 
+    		 LinkedList<String> registrados = session.readTransaction( new TransactionWork<LinkedList<String>>()
+             {
+                 @Override
+                 public LinkedList<String> execute( Transaction tx )
+                 {
+                     Result result = tx.run( "MATCH (n:Persona) RETURN n.nombre");
+                     LinkedList<String> nombres = new LinkedList<String>();
+                     List<Record> registros = result.list();
+                     for (int i = 0; i < registros.size(); i++) {
+                    	 //myactors.add(registros.get(i).toString());
+                    	 nombres.add(registros.get(i).get("n.nombre").asString());
+                     }
+                     
+                     return nombres;
+                 }
+             } );
+             
+             return false;
+         }
+    }
+    
 }
