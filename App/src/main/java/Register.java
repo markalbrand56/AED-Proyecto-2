@@ -47,6 +47,8 @@ public class Register extends HttpServlet{
 	 	String gusto4 = request.getParameter("gusto4");
 	 	String gusto5 = request.getParameter("gusto5");
 	 	
+	 	resultados.add("REGISTRÓ PARÁMETROS");
+	 	
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 	        {
 			 	boolean resultado = greeter.registrarNuevo(carnet, carrera, edad, email, instagram, nombre, sexo, gusto1, gusto2, gusto3, gusto4, gusto5);
