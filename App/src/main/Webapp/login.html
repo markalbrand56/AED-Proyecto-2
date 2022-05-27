@@ -146,6 +146,19 @@ span.psw {
     content: counter(li-counter);
     counter-increment: li-counter;
 }
+.myDiv {
+  text-align: center;
+  width: auto;  
+}
+.myDiv2 {
+  text-align: center;
+  width: auto;
+  font-family: 'Courier New', Courier, monospace;
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  display: inline-block;
+}
 
 </style>
 </head>
@@ -170,25 +183,31 @@ span.psw {
 
 <form action="#!" method="post">
   <div class="imgcontainer">
-    <img src="assets/img/1.jpg" alt="Avatar" class="avatar">
-  </div>
+  <img src="assets/img/1.jpg" alt="Avatar" class="avatar">
+</div>
 
   <div class="container">
-    <label for="uname"><b>Ingresa tu carnet</b></label>
-    <input type="text" placeholder="Ingresa tu carnet" id="carnet" required>
+  <label for="uname"><b>Ingresa tu carnet</b></label>
+  <input type="text" placeholder="Ingresa tu carnet" id="carnet" required>
 
         
-    <button type="button" id="btn_match">Vamos!</button>
+  <button type="button" id="btn_match">Vamos!</button>
   </div>
 
   <div class="container" style="background-color:#f2eeec3c">
-    <button type="button"  onclick="window.location='index.html';" class="cancelbtn">Cancel</button>
+  <button type="button"  onclick="window.location='index.html';" class="cancelbtn">Cancel</button>
+  </div>
+
+  <br/>
+  <div class="myDiv2">
+  <div id="titulo"></div>
+</div>
+  <br/>
+  <div class="myDiv2">
+  <div id="div-listado-match"></div>
   </div>
   <br/>
-  <div id="titulo"></div>
-  <br/>
-  <div id="div-listado-match"></div>
-  <br/>
+  
   <ol id="lista4"></ol>
   <script src="js/jquery.js"></script>
   <script src="js/sb-admin-2.js"> </script>
