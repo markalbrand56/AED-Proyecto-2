@@ -297,8 +297,8 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Boolean execute(Transaction tx) {
 
-                    //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
-                    String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
+                    String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
+                    //String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
                     Result result = tx.run(cadena);
                     return true;
                 }
