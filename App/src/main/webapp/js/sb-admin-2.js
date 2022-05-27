@@ -65,32 +65,31 @@
     var lugar = "";
     var musica = "";
     var pelicula = "";
-    $("input[name='carnet']" ).on('change', function () {
+    $("#carnet" ).on('change', function () {
         carnet = $(this).val();
-        alert(carnet); 
     });
     
-    $("input[name='nombre']" ).on('change', function () {
+    $("#nombre" ).on('change', function () {
         nombre = $(this).val();
     });
 
-    $("input[name='carrera']" ).on('change', function () {
+    $("#carrera" ).on('change', function () {
         carrera = $(this).val();
     });
 
-    $("input[name='edad']" ).on('change', function () {
+    $("#edad" ).on('change', function () {
         edad = $(this).val();
     });
 
-    $("input[name='email']" ).on('change', function () {
+    $("#email" ).on('change', function () {
         email = $(this).val();
     });
 
-    $("input[name='instagram']" ).on('change', function () {
+    $("#instagram" ).on('change', function () {
         instagram = $(this).val();
     });
 
-    $("input[name='sexo']" ).change(function () {
+    $("#sexo" ).on('change', function () {
         sexo = $(this).attr("id");
     });
 
@@ -107,7 +106,7 @@
     });
 
     $("input[name='musica']" ).on('change', function () {
-        musica = $(this).attr("id");
+        musica = $(this).attr("id"); 
     });
 
     $("input[name='pelicula']" ).on('change', function () {
@@ -116,6 +115,7 @@
 
     $("#submit").click(function() {
         alert(carnet);
+        alert(sexo); 
         $.ajax({
             type: "GET",
             url: '/HelloWorld/Register?carnet=' + $('#carnet').val() + '&carrera='+ $('#carrera').val() + '&edad=' + $('#edad').val() + '&email=' + $('#email').val() + '&instagram=' + $('#instagram').val() + '&nombre=' + $('#nombre').val() + '&sexo=' + $('#sexo').attr("id") + '&gusto1=' + $('#comida').attr("id") + '&gusto2=' + $('#lugar').attr("id") + '&gusto3=' + $('#musica').attr("id") + '&gusto4=' + $('#pelicula').attr("id") + '&gusto5=' + $('#hobbies').attr("id"),
