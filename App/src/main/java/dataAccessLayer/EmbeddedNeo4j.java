@@ -314,7 +314,59 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Boolean execute(Transaction tx) {
 
-                    String cadena = createGusto("00000", "Pollo");
+                    String cadena = createGusto(carnet, gusto1);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto2);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto3);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto4);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto5);
                     Result result = tx.run(cadena);
                     return true;
                 }
@@ -335,10 +387,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
     public String createGusto(String carnet, String gusto) {
-        // (C21004)-[:LE_GUSTA {gusta:'si'}]->(Pizza),
-        String string = "MATCH (p.Persona), (g.Gusto) WHERE p.carnet = '" + carnet + "' AND g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
+        // MATCH (p.Persona),
+        String string = "MATCH (p:Persona), (g:Gusto) WHERE p.carnet = '" + carnet + "' AND g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
         //String string = "Match (p.Persona), (g.Gusto) WHERE p.carnet = 'carnet' AND g.titulo = 'gusto' CREATE (p)-[:LE_GUSTA {gusta: 'si'}]->(g) RETURN p,g", parameters( "carnet", carnet, "gusto", gusto ));
-
         return string;
     }
 
