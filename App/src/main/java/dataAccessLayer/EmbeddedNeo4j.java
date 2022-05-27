@@ -104,6 +104,31 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		                return nombre; //devuelve los gustos de un usuario.
 		            }
 		    } );
+			
+			String carreraUsuario = session.readTransaction( new TransactionWork<String>()
+        	{
+	            @Override
+	            public String execute( Transaction tx )
+	            {
+	                Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.carrera");		         
+	                List<Record> registros = result.list();
+	                String nombre = registros.get(0).get("p.carrera").asString();
+	                return nombre; //devuelve los gustos de un usuario.
+	            }
+	    } );
+			String sexoUsuario = session.readTransaction( new TransactionWork<String>()
+        	{
+	            @Override
+	            public String execute( Transaction tx )
+	            {
+	                Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.sexo");		         
+	                List<Record> registros = result.list();
+	                String nombre = registros.get(0).get("p.sexo").asString();
+	                return nombre; //devuelve los gustos de un usuario.
+	            }
+	    } );
+			
+			
 
             for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
                 if(ids.get(i).equals(nombreUsuario)){
@@ -166,6 +191,27 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 		}
                 	}
                 }
+                
+                String carreraRegistrado = session.readTransaction( new TransactionWork<String>()
+	        	{
+		            @Override
+		            public String execute( Transaction tx )
+		            {
+		                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistrado + "\"}) RETURN p.carrera");		         
+		                List<Record> registros = result.list();
+		                String nombre = registros.get(0).get("p.carrera").asString();
+		                return nombre; //devuelve los gustos de un usuario.
+		            }
+		    } );
+                
+                if(carreraRegistrado.equals(carreraUsuario)) {
+                	int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
+        			puntuacion += 1;
+        			hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                }
+                
+                
+                
 
             }
 
