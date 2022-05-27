@@ -288,30 +288,95 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
    }
     
-    public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String gusto1, String gusto2, String gusto3, String gusto4, String gusto5)
-    {
+    public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String gusto1, String gusto2, String gusto3, String gusto4, String gusto5) {
 
         Boolean flag = false;
-    	 try ( Session session = driver.session() )
-         {
-             boolean registrados = false;
-    		  registrados = session.writeTransaction( new TransactionWork<Boolean>()
-             {
-                 @Override
-                 public Boolean execute(Transaction tx )
-                 {
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
 
-                     //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
-                     String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
-                     Result result = tx.run(cadena);
-                     return true;
-                 }
+                    //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
+                    String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
+                    Result result = tx.run(cadena);
+                    return true;
+                }
 
 
-             } );
+            });
 
-              return true; // pls
-         }
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto1);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto2);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto3);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto4);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        try (Session session = driver.session()) {
+            boolean registrados = false;
+            registrados = session.writeTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+
+                    String cadena = createGusto(carnet, gusto5);
+                    Result result = tx.run(cadena);
+                    return true;
+                }
+            });
+        }
+
+        System.out.println("Ya por favor \n");
+
+        return true;
+
     }
 
     public String stringCreateProfile(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo) {
