@@ -118,7 +118,7 @@
         alert(carnet);
         $.ajax({
             type: "GET",
-            url: '/HelloWorld/Register?carnet=' + $('#carnet').val() + '&carrera='+ $('#carrera').val() + '&edad=' + $('#edad').val() + '&email=' + $('#email').val() + '&instagram=' + $('#instagram').val() + '&nombre=' + $('#nombre').val() + '&sexo=' + $('#sexo').val() + '&gusto1=' + $('#comida').val() + '&gusto2=' + $('#lugar').val() + '&gusto3=' + $('#musica').val() + '&gusto4=' + $('#pelicula').val() + '&gusto5=' + $('#hobbie').val(),
+            url: '/HelloWorld/Register?carnet=' + $('#carnet').val() + '&carrera='+ $('#carrera').val() + '&edad=' + $('#edad').val() + '&email=' + $('#email').val() + '&instagram=' + $('#instagram').val() + '&nombre=' + $('#nombre').val() + '&sexo=' + $('#sexo').attr("id") + '&gusto1=' + $('#comida').attr("id") + '&gusto2=' + $('#lugar').attr("id") + '&gusto3=' + $('#musica').attr("id") + '&gusto4=' + $('#pelicula').attr("id") + '&gusto5=' + $('#hobbies').attr("id"),
             success: function(data) {
 				//alert("Result" + data.resultado);
 			    var htmlMatchList = '<ol id="lista4">';
