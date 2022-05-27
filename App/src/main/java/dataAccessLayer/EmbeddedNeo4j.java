@@ -135,10 +135,48 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		        }
 		    } );
 
-            for (int usuarioActual = 0; usuarioActual < ids.size(); usuarioActual++) {
+            // obtener carrera del usuario
+            String carreraUsuario = session.readTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.carrera");
+                    List<Record> registros = result.list();
+                    String carrera = registros.get(0).get("p.carrera").asString();
+                    return carrera; //devuelve los gustos de un usuario.
+                }
+            } );
 
-                String nombreRegistrado = ids.get(usuarioActual);
+            // obtener edad del usuario
+            int edadUsuario = session.readTransaction( new TransactionWork<Integer>()
+            {
+                @Override
+                public Integer execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.edad");
+                    List<Record> registros = result.list();
+                    int edad = registros.get(0).get("p.edad").asInt();
+                    return edad; //devuelve los gustos de un usuario.
+                }
+            } );
 
+            int sexoUsuario = session.readTransaction( new TransactionWork<Integer>()
+            {
+                @Override
+                public Integer execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH(p:Persona {carnet:\"" + usuario + "\"}) RETURN p.sexo");
+                    List<Record> registros = result.list();
+                    int sexo = registros.get(0).get("p.sexo").asInt();
+                    return sexo; //devuelve los gustos de un usuario.
+                }
+            } );
+
+            // Obtener los gustos de los demas
+            for (int registradoActual = 0; registradoActual < ids.size(); registradoActual++) {
+
+                String nombreRegistrado = ids.get(registradoActual); //usuarioActual es un contador.
                 LinkedList<String> gustosDeRegistrado = session.readTransaction( new TransactionWork<LinkedList<String>>()
                 {
                     @Override
@@ -149,21 +187,82 @@ public class EmbeddedNeo4j implements AutoCloseable{
                         List<Record> registros = result.list();
                         for (int i = 0; i < registros.size(); i++) {
                             //myactors.add(registros.get(i).toString());
-                            gustos.add(registros.get(i).get("gustos.titulo").asString());
+                            gustos.add(registros.get(i).get("gustos.titulo").asString()); // añadir los gustos del usuario registrado actual. (nombreRegistrado)
                         }
 
                         return gustos; //devuelve los gustos de un usuario.
                     }
                 } );
 
-                for (int j = 0; j < gustosUsuario.size(); j++) {
-                	for(int k = 0; k < gustosDeRegistrado.size(); k++) {
+                // Puntuar los gustos de los demás en el hashmap.
+
+                for (int j = 0; j < gustosUsuario.size(); j++) { // recorremos cada gusto del usuario.
+                	for(int k = 0; k < gustosDeRegistrado.size(); k++) { // recorremos cada gusto del registrado.
                 		if(gustosUsuario.get(j).equals(gustosDeRegistrado.get(k))){
                 			//hashmapDeQuimica.get(ids.get(i))
-                			int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
+                			int puntuacion = hashmapDeQuimica.get(ids.get(registradoActual));
                 			puntuacion += 1;
-                			hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                			hashmapDeQuimica.put(ids.get(registradoActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
                 		}
+
+                        // comparacion de edades
+                        String nombreRegistradoActual = ids.get(registradoActual); //usuarioActual es un contador.
+                        int edadRegistrado = session.readTransaction( new TransactionWork<Integer>()
+                        {
+                            @Override
+                            public Integer execute( Transaction tx )
+                            {
+                                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistradoActual + "\"}) RETURN p.edad");
+                                List<Record> registros = result.list();
+                                int edad = registros.get(0).get("p.edad").asInt();
+                                return edad;
+                            }
+                        } );
+                        if(edadRegistrado - edadUsuario < -2 || edadRegistrado - edadUsuario > 2) {
+                        	int puntuacion = hashmapDeQuimica.get(ids.get(registradoActual));
+                        	puntuacion += 1;
+                        	hashmapDeQuimica.put(ids.get(registradoActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                        }
+
+                        //comparacion de sexos
+                        int sexoRegistrado = session.readTransaction( new TransactionWork<Integer>()
+                        {
+                            @Override
+                            public Integer execute( Transaction tx )
+                            {
+                                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistradoActual + "\"}) RETURN p.sexo");
+                                List<Record> registros = result.list();
+                                int sexo = registros.get(0).get("p.sexo").asInt();
+                                return sexo;
+                            }
+                        } );
+
+                        if(sexoRegistrado != sexoUsuario) {
+                        	int puntuacion = hashmapDeQuimica.get(ids.get(registradoActual));
+                        	puntuacion += 1;
+                        	hashmapDeQuimica.put(ids.get(registradoActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                        }
+
+                        //comparacion de carreras
+                        String carreraRegistrado = session.readTransaction( new TransactionWork<String>()
+                        {
+                            @Override
+                            public String execute( Transaction tx )
+                            {
+                                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + nombreRegistradoActual + "\"}) RETURN p.carrera");
+                                List<Record> registros = result.list();
+                                String carrera = registros.get(0).get("p.carrera").asString();
+                                return carrera;
+                            }
+                        } );
+
+                        if(carreraRegistrado.equals(carreraUsuario)) {
+                        	int puntuacion = hashmapDeQuimica.get(ids.get(registradoActual));
+                        	puntuacion += 1;
+                        	hashmapDeQuimica.put(ids.get(registradoActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
+                        }
+
+
                 	}
                 }
 
@@ -180,7 +279,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             }
             
             if(recomendaciones.size() == 0) {
-            	recomendaciones.add("No se encontr� un Match");
+            	recomendaciones.add("No se encontr� un Match");
             }
             
             return recomendaciones;
