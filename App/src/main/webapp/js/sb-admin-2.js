@@ -118,7 +118,7 @@
         alert(sexo); 
         $.ajax({
             type: "GET",
-            url: '/HelloWorld/Register?carnet=' + $('#carnet').val() + '&carrera='+ $('#carrera').val() + '&edad=' + $('#edad').val() + '&email=' + $('#email').val() + '&instagram=' + $('#instagram').val() + '&nombre=' + $('#nombre').val() + '&sexo=' + $('#sexo').attr("id") + '&gusto1=' + $('#comida').attr("id") + '&gusto2=' + $('#lugar').attr("id") + '&gusto3=' + $('#musica').attr("id") + '&gusto4=' + $('#pelicula').attr("id") + '&gusto5=' + $('#hobbies').attr("id"),
+            url: '/HelloWorld/Register?carnet=' + $('#carnet').val() + '&carrera='+ $('#carrera').val() + '&edad=' + $('#edad').val() + '&email=' + $('#email').val() + '&instagram=' + $('#instagram').val() + '&nombre=' + $('#nombre').val() + '&sexo=' + $('input[name="sexo"]:checked').val() + '&gusto1=' + $('input[name="comida"]:checked').val() + '&gusto2=' + $('input[name="lugar"]:checked').val() + '&gusto3=' + $('input[name="musica"]:checked').val() + '&gusto4=' + $('input[name="pelicula"]:checked').val() + '&gusto5=' + $('input[name="hobbies"]:checked').val(),
             success: function(data) {
 				//alert("Result" + data.resultado);
 			    var htmlMatchList = '<ol id="lista4">';
