@@ -335,10 +335,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
     public String createGusto(String carnet, String gusto) {
-        // (C21004)-[:LE_GUSTA {gusta:'si'}]->(Pizza),
-        String string = "MATCH (p.Persona), (g.Gusto) WHERE p.carnet = '" + carnet + "' AND g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
+        // MATCH (p.Persona),
+        String string = "MATCH (p:Persona), (g:Gusto) WHERE p.carnet = '" + carnet + "' AND g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
         //String string = "Match (p.Persona), (g.Gusto) WHERE p.carnet = 'carnet' AND g.titulo = 'gusto' CREATE (p)-[:LE_GUSTA {gusta: 'si'}]->(g) RETURN p,g", parameters( "carnet", carnet, "gusto", gusto ));
-
         return string;
     }
 
