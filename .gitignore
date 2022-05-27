@@ -32,3 +32,4 @@ replay_pid*
 *.dia~
 /.vscode
 ejemplo_peliculas.txt
+App/lib
