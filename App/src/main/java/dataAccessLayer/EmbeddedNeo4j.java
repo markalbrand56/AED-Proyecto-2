@@ -303,12 +303,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
                      //String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
                      String cadena = stringCreateProfile("00000", "carrera", "10", "email", "instagram", "nombre", "sexo");
-                     tx.run(cadena);
-                    tx.run(createGusto("00000", "Pizza"));
-                    tx.run(createGusto("00000", "Playa"));
-                    tx.run(createGusto("00000", "Bar"));
-                    tx.run(createGusto("00000", "Cine"));
-                    tx.run(createGusto("00000", "Jazz"));
+                     Result result = tx.run(cadena);
+                    Result result1 = tx.run(createGusto("00000", "Pizza"));
+                    Result result2 = tx.run(createGusto("00000", "Playa"));
+                    Result result3 = tx.run(createGusto("00000", "Bar"));
+                    Result result4 = tx.run(createGusto("00000", "Cine"));
+                    Result result5 = tx.run(createGusto("00000", "Jazz"));
 
                      return true;
                  }
@@ -327,7 +327,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
     public String createGusto(String carnet, String gusto) {
         // (C21004)-[:LE_GUSTA {gusta:'si'}]->(Pizza),
-        String string = "MATCH (p.Persona), (g.Gusto) WHERE p.carnet = '" + carnet + "' AND (g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
+        String string = "MATCH (p.Persona), (g.Gusto) WHERE p.carnet = '" + carnet + "' AND g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
+        //String string = "Match (p.Persona), (g.Gusto) WHERE p.carnet = 'carnet' AND g.titulo = 'gusto' CREATE (p)-[:LE_GUSTA {gusta: 'si'}]->(g) RETURN p,g", parameters( "carnet", carnet, "gusto", gusto ));
+
         return string;
     }
 
