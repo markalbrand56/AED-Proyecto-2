@@ -167,7 +167,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 			 
 			 // Obtener los gustos de la persona para compararlos con los demÃ¡s.
 			 LinkedList<String> gustosUsuario = session.readTransaction( new TransactionWork<LinkedList<String>>()
-		        {
+			 	{
 		            @Override
 		            public LinkedList<String> execute( Transaction tx )
 		            {
@@ -180,12 +180,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		            }
 		
 		            return gustos; //devuelve los gustos de un usuario.
-		        }
-		    } );
+		            }
+			 	} );
 
             for (int usuarioActual = 0; usuarioActual < ids.size(); usuarioActual++) {
 
-                String nombreRegistrado = ids.get(usuarioActual);
+            	String nombreRegistrado = ids.get(usuarioActual);
 
                 LinkedList<String> gustosDeRegistrado = session.readTransaction( new TransactionWork<LinkedList<String>>()
                 {
@@ -226,7 +226,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		                String nombre = registros.get(0).get("p.carrera").asString();
 		                return nombre; //devuelve los gustos de un usuario.
 		            }
-		    } );
+	        	} );
                 
                 if(carreraRegistrado.equals(carreraUsuario)) {
                 	int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
@@ -264,7 +264,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
     	                String nombre = registros.get(0).get("p.edad").asString();
     	                return nombre; //devuelve los gustos de un usuario.
     	            }
-    	    } );
+            	} );
     			int edadRegistrado = Integer.parseInt(edadTemp2);
     			
     			if((edadRegistrado - edadUsuario) <= 2 && (edadRegistrado - edadUsuario) >= -2) {
@@ -272,10 +272,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     puntuacion += 1;
                     hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion); //asignamos puntaje a cada uno de los elementos del hasmap.
     			}
-                
-                
-                
-
             }
 
             LinkedList<String> recomendaciones = new LinkedList<>();
@@ -289,7 +285,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             }
             
             if(recomendaciones.size() == 0) {
-            	recomendaciones.add("No se encontrï¿½ un Match");
+            	recomendaciones.add("No se encontró un Match");
             }
             
             recomendaciones.add(edadTemp);
