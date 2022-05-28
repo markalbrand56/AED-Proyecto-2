@@ -20,13 +20,13 @@ import org.json.simple.JSONArray;
  * Servlet implementation class MoviesByActor
  */
 @WebServlet("/Recomendacion")
-public class MoviesByActor extends HttpServlet {
+public class Recommendation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoviesByActor() {
+    public Recommendation() {
         super();
         // TODO Auto-generated constructor stub
     }

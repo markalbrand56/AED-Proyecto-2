@@ -19,13 +19,13 @@ import dataAccessLayer.EmbeddedNeo4j;
  * Servlet implementation class HelloServlet
  */
 @WebServlet("/HelloServlet")
-public class HelloServlet extends HttpServlet {
+public class Users extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloServlet() {
+    public Users() {
         super();
         // TODO Auto-generated constructor stub
     }

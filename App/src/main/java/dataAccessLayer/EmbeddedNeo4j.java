@@ -94,7 +94,11 @@ public class EmbeddedNeo4j implements AutoCloseable{
 			HashMap<String, Integer> hashmapDeQuimica = new HashMap<String, Integer>();
 			LinkedList<String> ids = getRegistrados();
             
-			// Obtener los gustos de la persona para compararlos con los demás.
+			/*
+			 * DATOS DEL USUARIO
+			 * */
+			
+			// Nombre
 			String nombreUsuario = session.readTransaction( new TransactionWork<String>()
 	        	{
 		            @Override
@@ -107,6 +111,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 		            }
 		    } );
 			
+			// Carrera
 			String carreraUsuario = session.readTransaction( new TransactionWork<String>()
         	{
 	            @Override
@@ -117,7 +122,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	                String nombre = registros.get(0).get("p.carrera").asString();
 	                return nombre; //devuelve los gustos de un usuario.
 	            }
-	    } );
+        	} );
+			
+			// Sexo
 			String sexoUsuario = session.readTransaction( new TransactionWork<String>()
         	{
 	            @Override
@@ -128,8 +135,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	                String nombre = registros.get(0).get("p.sexo").asString();
 	                return nombre; //devuelve los gustos de un usuario.
 	            }
-	    } );
+        	} );
 			
+			// Edad
 			String edadTemp = session.readTransaction( new TransactionWork<String>()
         	{
 	            @Override
@@ -140,11 +148,11 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	                String nombre = registros.get(0).get("p.edad").asString();
 	                return nombre; //devuelve los gustos de un usuario.
 	            }
-	    } );
+        	} );
 			int edadUsuario = Integer.parseInt(edadTemp);
 			
 			
-
+			
             for (int i = 0; i < ids.size(); i++) { // quitar al usuario de la lista.
                 if(ids.get(i).equals(nombreUsuario)){
                     ids.remove(i);
@@ -257,7 +265,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
     	                return nombre; //devuelve los gustos de un usuario.
     	            }
     	    } );
-    			int edadRegistrado = Integer.parseInt(edadTemp);
+    			int edadRegistrado = Integer.parseInt(edadTemp2);
     			
     			if((edadRegistrado - edadUsuario) <= 2 && (edadRegistrado - edadUsuario) >= -2) {
     				int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
@@ -283,6 +291,8 @@ public class EmbeddedNeo4j implements AutoCloseable{
             if(recomendaciones.size() == 0) {
             	recomendaciones.add("No se encontr� un Match");
             }
+            
+            recomendaciones.add(edadTemp);
             
             return recomendaciones;
         }
