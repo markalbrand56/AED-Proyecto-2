@@ -47,6 +47,7 @@ CREATE (Cumbia:Gusto {titulo:'Cumbia'})
 CREATE (Rap:Gusto {titulo:'Rap'})
 
 CREATE (Terror:Gusto {titulo:'Terror'})
+CREATE (Accion:Gusto {titulo:'Accion'})
 CREATE (Románticas:Gusto {titulo:'Románticas'})
 CREATE (Ficción:Gusto {titulo:'Ficción'})
 CREATE (Thriller:Gusto {titulo:'Thriller'})

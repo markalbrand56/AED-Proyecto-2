@@ -297,7 +297,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Boolean execute(Transaction tx) {
 
-                    String cadena = stringCreateProfile("00000", carrera, edad, email, instagram, nombre, sexo);
+                    String cadena = stringCreateProfile(carnet, carrera, edad, email, instagram, nombre, sexo);
                     //String cadena = stringCreateProfile("00000", "Mec�nica", "25", "x.x", "aaaa", "Pedro", "masculino");
                     Result result = tx.run(cadena);
                     return true;
@@ -380,7 +380,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
     public String stringCreateProfile(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo) {
-        //CREATE                          (C21004     :Persona {carnet: '    21004', nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
         // CREATE (C21004:Persona {carnet: '21004', nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
         String string =  "CREATE (" + "C" + carnet + ":Persona {carnet: '" + carnet +  "', nombre:'" + nombre + "', email:'" + email + "', instagram:'" + instagram + "', carrera:'" + carrera + "', sexo:'" + sexo + "', edad:'" + edad + "'})";
         return string;
