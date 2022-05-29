@@ -95,7 +95,6 @@
 
     $("input[name='hobbies']" ).on('change', function () {
         hobbie = $('input[name="hobbies"]:checked').attr("id"); 
-        alert(hobbie);
     });
 
     $("input[name='comida']" ).on('change', function () {
@@ -115,8 +114,6 @@
     });
 
     $("#submit").click(function() {
-        alert(carnet);
-        alert(sexo); 
         $.ajax({
             type: "GET",
             url: '/HelloWorld/Register?carnet=' + $('#carnet').val() + '&carrera='+ $('#carrera').val() + '&edad=' + $('#edad').val() + '&email=' + $('#email').val() + '&instagram=' + $('#instagram').val() + '&nombre=' + $('#nombre').val() + '&sexo=' + $('input[name="sexo"]:checked').attr("id") + '&gusto1=' + $('input[name="comida"]:checked').attr("id") + '&gusto2=' + $('input[name="lugar"]:checked').attr("id") + '&gusto3=' + $('input[name="musica"]:checked').attr("id") + '&gusto4=' + $('input[name="pelicula"]:checked').attr("id") + '&gusto5=' + $('input[name="hobbies"]:checked').attr("id"),
