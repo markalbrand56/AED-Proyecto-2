@@ -279,7 +279,19 @@ public class EmbeddedNeo4j implements AutoCloseable{
             int max = Collections.max(hashmapDeQuimica.values());
             for (Map.Entry<String, Integer> entry : hashmapDeQuimica.entrySet()) {
                 if (entry.getValue() == max && entry.getValue() !=0) {
-                    recomendaciones.add(entry.getKey());
+                	String usuarioRec = session.readTransaction( new TransactionWork<String>()
+                	{
+        	            @Override
+        	            public String execute( Transaction tx )
+        	            {
+        	                Result result = tx.run( "MATCH(p:Persona {nombre:\"" + entry.getKey() + "\"}) RETURN p.instagram");		         
+        	                List<Record> registros = result.list();
+        	                String nombre = registros.get(0).get("p.instagram").asString();
+        	                return nombre; //devuelve los gustos de un usuario.
+        	            }
+                	} );
+                	
+                    recomendaciones.add((entry.getKey() + " IG:  @" + usuarioRec));
                 }
             }
             
