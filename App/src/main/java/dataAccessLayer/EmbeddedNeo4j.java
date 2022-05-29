@@ -63,8 +63,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
     {
     	 try ( Session session = driver.session() )
          {
-    		 
-    		 
     		 LinkedList<String> registrados = session.readTransaction( new TransactionWork<LinkedList<String>>()
              {
                  @Override
@@ -74,7 +72,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
                      LinkedList<String> nombres = new LinkedList<String>();
                      List<Record> registros = result.list();
                      for (int i = 0; i < registros.size(); i++) {
-                    	 //myactors.add(registros.get(i).toString());
                     	 nombres.add(registros.get(i).get("n.nombre").asString());
                      }
                      
@@ -316,7 +313,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
      */
     public boolean registrarNuevo(String carnet, String carrera, String edad, String email, String instagram, String nombre, String sexo, String gusto1, String gusto2, String gusto3, String gusto4, String gusto5) {
 
-        Boolean flag = false;
         try (Session session = driver.session()) {
             boolean registrados = false;
             registrados = session.writeTransaction(new TransactionWork<Boolean>() {
@@ -398,8 +394,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
             });
         }
 
-        System.out.println("Inscripción exitosa");
-
         return true;
 
     }
@@ -413,9 +407,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
     public String createGusto(String carnet, String gusto) {
-        // MATCH (p.Persona),
         String string = "MATCH (p:Persona), (g:Gusto) WHERE p.carnet = '" + carnet + "' AND g.titulo = '" + gusto + "' CREATE (p)-[:LE_GUSTA {gusta:'si'}]->(g) RETURN p,g";
-        //String string = "Match (p.Persona), (g.Gusto) WHERE p.carnet = 'carnet' AND g.titulo = 'gusto' CREATE (p)-[:LE_GUSTA {gusta: 'si'}]->(g) RETURN p,g", parameters( "carnet", carnet, "gusto", gusto ));
         return string;
     }
 
