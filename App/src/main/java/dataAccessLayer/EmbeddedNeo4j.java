@@ -21,7 +21,7 @@ import java.util.*;
 /**
  * @author Mark Albrand
  * @author Alejandro Azurdia
- * Hecho tomando como base el cÃ³digo suministrado por Moises Alonso.
+ * Hecho tomando como base el código suministrado por Moises Alonso.
  */
 public class EmbeddedNeo4j implements AutoCloseable{
 
@@ -178,7 +178,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 			 	} );
 
 
-            // Inicio del ciclo para comparar los gustos de los demÃ¡s (registrados) con los gustos del usuario.
+            // Inicio del ciclo para comparar los gustos de los demás (registrados) con los gustos del usuario.
 
                 for (int usuarioActual = 0; usuarioActual < ids.size(); usuarioActual++) {
 
@@ -205,7 +205,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 		if(gustosUsuario.get(j).equals(gustosDeRegistrado.get(k))){ // si el gusto del usuario es igual al gusto del registrado.
                 			int puntuacion = hashmapDeQuimica.get(ids.get(usuarioActual));
                 			puntuacion += 1;
-                			hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion);  // se suma "1" a la puntuaciÃ³n del registrado en el hashmap "quÃ­mica"
+                			hashmapDeQuimica.put(ids.get(usuarioActual), puntuacion);  // se suma "1" a la puntuación del registrado en el hashmap "quÃ­mica"
                 		}
                 	}
                 }
@@ -273,7 +273,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
             }
 
 
-            LinkedList<String> recomendaciones = new LinkedList<>(); // CreaciÃ³n de la lista de NOMBRES DE REGISTRADOS recomendados para el usuario.
+            LinkedList<String> recomendaciones = new LinkedList<>(); // Creación de la lista de NOMBRES DE REGISTRADOS recomendados para el usuario.
 
             // obtener el valor mas alto de las values del hashmap.
             int max = Collections.max(hashmapDeQuimica.values());
@@ -284,11 +284,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
             }
             
             if(recomendaciones.size() == 0) {
-            	recomendaciones.add("No se encontrï¿½ un Match");
+            	recomendaciones.add("No se encontró un Match");
             }
-            
-            recomendaciones.add(edadTemp);
-            return recomendaciones;
+        	return recomendaciones;
         }
    }
 
@@ -296,7 +294,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
 
     /**
-     * MÃ©todo para registrar un nuevo usuario.
+     * Método para registrar un nuevo usuario.
      * @param carnet
      * @param carrera
      * @param edad
