@@ -32,8 +32,9 @@ public class Register extends HttpServlet{
 	 	response.setCharacterEncoding("UTF-8");
 	 	JSONObject myResponse = new JSONObject();
 	 	
-	 	JSONArray resultados = new JSONArray();
+	 	JSONArray resultados = new JSONArray();  // Resultados para devolver al frontend
 	 	
+	 	// Parámetros de la encuesta del usuario
 	 	String carnet = request.getParameter("carnet");
 	 	String carrera = request.getParameter("carrera");
 	 	String edad = request.getParameter("edad");
@@ -47,9 +48,6 @@ public class Register extends HttpServlet{
 	 	String gusto4 = request.getParameter("gusto4");
 	 	String gusto5 = request.getParameter("gusto5");
 	 	
-	 	resultados.add("REGISTRÓ PARÁMETROS");
-	 	resultados.add(carnet);
-	 	resultados.add(nombre);
 	 	
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 	        {
