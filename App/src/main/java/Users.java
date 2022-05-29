@@ -40,7 +40,7 @@ public class Users extends HttpServlet {
 		 	response.setCharacterEncoding("UTF-8");
 		 	JSONObject myResponse = new JSONObject();
 		 	
-		 	JSONArray nombreUsuarios = new JSONArray();
+		 	JSONArray nombreUsuarios = new JSONArray();  // Todos los usuarios registrados
 		 	
 		 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
 		        {

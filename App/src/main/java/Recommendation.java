@@ -41,7 +41,7 @@ public class Recommendation extends HttpServlet {
 	 	response.setCharacterEncoding("UTF-8");
 	 	JSONObject myResponse = new JSONObject();
 	 	
-	 	JSONArray recomendaciones = new JSONArray();
+	 	JSONArray recomendaciones = new JSONArray();  // Todas las recomendaciones para el usuario
 	 	
 	 	String usuario = request.getParameter("carnet");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "221756" ) )
