@@ -24,7 +24,7 @@
 
 1. Dirigirse a la página **Encuentra mi Match**
 
-![Match]()
+![Match](https://github.com/markalbrand56/AED-Proyecto-2/blob/build/img/Captura%20de%20pantalla%202022-06-02%20114429.jpg)
 
 2. Ingresa tu carnet
 
