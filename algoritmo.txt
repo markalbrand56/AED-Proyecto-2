@@ -22,9 +22,6 @@ nombre es igual a ingreso en cuadro de texto 1
 
 edad es igual a ingreso en cuadro de texto 2
 
-zona de vivienda es igual a ingreso en cuadro de texto 3
-
-signo zodiacal es igual a ingreso en cuadro de texto 4
 
 nombre en redes sociales es igual a ingreso en cuadro de texto 5
 
@@ -40,19 +37,12 @@ facultad a la que pertenece es igual a ingreso en casilla de selección 4
 
 Se muestra la ventana 2
 
-genero para match es igual a ingreso en casilla de selección 5
 
-genero del usuario es igual a ingreso en casilla de selección 6
+carrera es igual a ingreso en casilla de selección 7
 
-facultad es igual a ingreso en casilla de selección 7
-
-###################Ventana 3###################
-
-genero del usuario es igual a ingreso en casilla de selección 8
-
-facultad es igual a ingreso en casilla de selección 9
 
 ###################Procesos###################
+
 Obtenención de perfiles
 
 verificación si perfil actual es igual a primer elemento de lista de perfiles
@@ -61,28 +51,17 @@ contador es igual a 0
 
 mientras contador sea menor a cantidad de elementos en lista de perfiles:
         
-    si lugar de usuario es igual a lugar de perfil actual:
-        contador +1
 
-    si edad de usuario es igual edad de perfil actual:
+    si edad de usuario es igual o hay una diferencia de 2 o menos a la edad de perfil actual:
         puntaje de pefil +1
 
-    si comida preferida es igual a comida preferida de perfil actual:
-        puntaje de pefil +1
-    
-    por cada hobbie que sea igual a hobbies del perfil actual:
-        puntaje de pefil +1
-    
-    por cada lugar preferido que sea igual a lugares preferidos del perfil actual:
-        puntaje de pefil +1
-    
-    por cada genero de música que sea igual a generos de música del perfil actual:
-        puntaje de pefil +1
-    
-    por cada genero de película que sea igual a generos de película del perfil actual:
+    si carrera de usuario es igual a la carrera de perfil actual:
         puntaje de pefil +1
 
-    si facultad es igual a facutad del perfil de actual:
+    si sexo del usuario no es igual al sexo del perfil actual:
+        puntaje de pefil +1
+    
+    por cada gusto que sea igual a gustos del perfil actual:
         puntaje de pefil +1
         
 FIN

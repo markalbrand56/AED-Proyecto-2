@@ -16,20 +16,49 @@ Campos
 
 */
 
-CREATE (C21004:Persona {nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
-CREATE (C21242:Persona {nombre:'Alejandro Azurdia', email:'azu21242@uvg.edu.gt', instagram:'aleazurdia', carrera:'Computación', sexo:'masculino', signo:'aries', zona:'5', edad:'20'})
-CREATE (C21146:Persona {nombre:'Diego Morales', email:'mor21146@uvg.edu.gt', instagram:'diego_0000', carrera:'Computación', sexo:'masculino', signo:'escorpio', zona:'16', edad:'19'})
-CREATE (C21199:Persona {nombre:'Jimena Hernández', email:'her21199@uvg.edu.gt', instagram:'kojimena', carrera:'Computación', sexo:'femenino', signo:'capricornio', zona:'15', edad:'18'})
 
 CREATE (Pizza:Gusto {titulo:'Pizza'})
 CREATE (Sushi:Gusto {titulo:'Sushi'})
-CREATE (Amigos:Gusto {titulo:'Salir con amigos'})
-CREATE (Videojuegos:Gusto {titulo:'Jugar videojuegos'})
+CREATE (Hamburguesas:Gusto {titulo:'Hamburguesas'})
+CREATE (Tacos:Gusto {titulo:'Tacos'})
+CREATE (Tipica:Gusto {titulo:'Tipica'})
+CREATE (Carnes:Gusto {titulo:'Carnes'})
+
+CREATE (Amigos:Gusto {titulo:'Amigos'})
+CREATE (Videojuegos:Gusto {titulo:'Videojuegos'})
+CREATE (Fiesta:Gusto {titulo:'Fiesta'})
+CREATE (Deporte:Gusto {titulo:'Deporte'})
+CREATE (Peliculas:Gusto {titulo:'Peliculas'})
+CREATE (Viajar:Gusto {titulo:'Viajar'})
+
+CREATE (Playa:Gusto {titulo:'Playa'})
 CREATE (Cine:Gusto {titulo:'Cine'})
+CREATE (Restaurantes:Gusto {titulo:'Restaurantes'})
+CREATE (Bar:Gusto {titulo:'Bar'})
+CREATE (Teatro:Gusto {titulo:'Teatro'})
+
 CREATE (Reggaeton:Gusto {titulo:'Reggaeton'})
 CREATE (Pop:Gusto {titulo:'Pop'})
+CREATE (Indie:Gusto {titulo:'Indie'})
+CREATE (Jazz:Gusto {titulo:'Jazz'})
+CREATE (Rock:Gusto {titulo:'Rock'})
+CREATE (Trap:Gusto {titulo:'Trap'})
+CREATE (Cumbia:Gusto {titulo:'Cumbia'})
+CREATE (Rap:Gusto {titulo:'Rap'})
+
 CREATE (Terror:Gusto {titulo:'Terror'})
+CREATE (Accion:Gusto {titulo:'Accion'})
 CREATE (Románticas:Gusto {titulo:'Románticas'})
+CREATE (Ficción:Gusto {titulo:'Ficción'})
+CREATE (Thriller:Gusto {titulo:'Thriller'})
+CREATE (Musicales:Gusto {titulo:'Musicales'})
+CREATE (Documentales:Gusto {titulo:'Documentales'})
+CREATE (Aventuras:Gusto {titulo:'Aventuras'})
+
+CREATE (C21004:Persona {carnet: '21004', nombre:'Mark Albrand', email:'alb21004@uvg.edu.gt', instagram:'mark.albrand5', carrera:'Computación', sexo:'masculino', signo:'tauro', zona:'10', edad:'20'})
+CREATE (C21242:Persona {carnet: '21242', nombre:'Alejandro Azurdia', email:'azu21242@uvg.edu.gt', instagram:'aleazurdia', carrera:'Computación', sexo:'masculino', signo:'aries', zona:'5', edad:'20'})
+CREATE (C21146:Persona {carnet: '21146', nombre:'Diego Morales', email:'mor21146@uvg.edu.gt', instagram:'diego_0000', carrera:'Computación', sexo:'masculino', signo:'escorpio', zona:'16', edad:'19'})
+CREATE (C21199:Persona {carnet: '21199', nombre:'Jimena Hernández', email:'her21199@uvg.edu.gt', instagram:'kojimena', carrera:'Computación', sexo:'femenino', signo:'capricornio', zona:'15', edad:'18'})
 
 CREATE
 (C21004)-[:LE_GUSTA {gusta:'si'}]->(Pizza),

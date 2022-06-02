@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head><title>UVG MATCH</title>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+  body {font-family: sans-serif, Helvetica, monospace;}
+  form {border: 3px solid #f1f1f1;}
+  
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right, rgb(249, 122, 4), rgb(244, 69, 69));
+
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: sans-serif;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #d25f2a;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+h1, .h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media (min-width: 1200px) {
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: "Catamaran", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #020101;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+</style>
+<body>
+
+<form id="regForm" action="login.html">
+  <h1>Registro:</h1>
+  <p>Se te preguntarán tus gustos a continuación, elige el que más se adapte a ti en cada categoría (solamente te derará elegir una opción por categoría).</p>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">Información Personal:
+    <p><input placeholder="Carnet" oninput="this.className = ''" id="carnet" required></p>
+    <p><input placeholder="Nombre" oninput="this.className = ''" id="nombre" required></p>
+    <p><input placeholder="Carrera" oninput="this.className = ''" id="carrera" required></p>
+    <p><input placeholder="Edad" oninput="this.className = ''" id="edad" required></p>
+    <p><input placeholder="Email" oninput="this.className = ''" id="email" required></p>
+    <p><input placeholder="Username en instagram" oninput="this.className = ''" id="instagram" required></p>
+    <p><label>Ingresa tu sexo</label></p>
+    <p><label class="container">Hombre
+      <input type="radio" name="sexo" id="masculino" required>
+      <span class="checkmark"></span></label></p>
+    <p><label class="container">Mujer
+      <input type="radio" name="sexo" id="femenino">
+      <span class="checkmark"></span></label></p>
+    <p><div>Marca tus hobbies favoritos: </div></p>  
+    <p><label class="container">Salir con amigos
+        <input type="radio" name="hobbies" id="Amigos" required>
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Jugar videojuegos
+        <input type="radio"  name="hobbies" id="Videojuegos">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Ir de fiesta
+        <input type="radio"  name="hobbies" id="Fiesta">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Hacer deporte
+        <input type="radio"  name="hobbies" id="Deporte">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Ver peliculas
+        <input type="radio"  name="hobbies" id="Peliculas">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Viajar
+        <input type="radio"  name="hobbies" id="Viajar">
+        <span class="checkmark"></span></label></p>  
+    <p><div>Marca tus comidas favoritas: </div></p>  
+    <p><label class="container">Pizza
+        <input type="radio" name="comida" id="Pizza" required>
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Sushi
+        <input type="radio"  name="comida" id="Sushi">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Hamburguesas
+        <input type="radio"  name="comida" id="Hamburgesas" >
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Tacos
+        <input type="radio"  name="comida" id="Tacos">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Carnes
+        <input type="radio"  name="comida" id="Carnes">
+        <span class="checkmark"></span></label></p>  
+    <p><div>Marca tus lugares favoritos: </div></p>  
+    <p><label class="container">Cine
+        <input type="radio" name="lugar" id="Cine" required>
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Restaurantes
+        <input type="radio"  name="lugar" id="Restaurantes">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Bares
+        <input type="radio"  name="lugar" id="Bar">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Teatro
+        <input type="radio"  name="lugar" id="Teatro">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Playa
+        <input type="radio" name="lugar" id="Playa">
+        <span class="checkmark"></span></label></p>  
+
+    <p><div>Marca tus generos de musica favoritos: </div></p>  
+    <p><label class="container">Reggaeton
+        <input type="radio" name="musica" id="Reggaeton" required>
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Jazz
+        <input type="radio" name="musica" id="Jazz">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Rock
+        <input type="radio"  name="musica" id="Rock">
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Pop
+        <input type="radio"  name="musica" id="Pop">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Alternativo
+        <input type="radio"  name="musica" id="Alternativo">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Trap
+        <input type="radio" name="musica" id="Trap">
+        <span class="checkmark"></span></label></p> 
+    <p><label class="container">Rap
+        <input type="radio"  name="musica" id="Rap">
+        <span class="checkmark"></span></label></p> 
+    <p><label class="container">Cumbia
+        <input type="radio"  name="musica" id="Cumbia">
+        <span class="checkmark"></span></label></p>  
+    <p><div>Marca tus generos de peliculas favoritas: </div></p>  
+    <p><label class="container">Romanticas
+        <input type="radio" name="pelicula" id="Romanticas" required>
+        <span class="checkmark"></span></label></p>
+    <p><label class="container">Terror
+        <input type="radio"  name="pelicula" id="Thriller">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Accion
+        <input type="radio" name="pelicula" id="Accion">
+        <span class="checkmark"></span></label></p>    
+    <p><label class="container">Comedia
+        <input type="radio" name="pelicula" id="Comedia">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Ciencia ficción
+        <input type="radio"  name="pelicula" id="Ficción">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Documentales
+        <input type="radio" name="pelicula" id="Documentales">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Musicales
+        <input type="radio" name="pelicula" id="Musicales">
+        <span class="checkmark"></span></label></p>  
+    <p><label class="container">Aventura
+        <input type="radio" name="pelicula" id="Aventuras">
+        <span class="checkmark"></span></label></p>  
+   </div> 
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="submit" id="submit">¡Encuentra mi match!</button>
+
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+<script src="js/jquery.js"></script>
+<script src="js/sb-admin-2.js"> </script>
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+</script>
+
+</body>
+</html>
