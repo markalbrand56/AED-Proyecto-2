@@ -44,6 +44,6 @@
 
 ### Requisitos
 
-1. [Archivo War]() del proyecto
+1. [Archivo War](https://github.com/markalbrand56/AED-Proyecto-2/releases/tag/v1.0.0) del proyecto
 2. Windows Server
 3. Tomcat 8.5
