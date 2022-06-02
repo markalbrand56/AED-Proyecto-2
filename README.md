@@ -20,6 +20,9 @@
 
 5. Enviar tus resultados
 
+</br>
+</br>
+
 ### Recomendación
 
 1. Dirigirse a la página **Encuentra mi Match**
@@ -32,3 +35,15 @@
 
 
 > Se te mostrarán los nombres de tus Matchs y sus usuarios de Instagram para que puedas contactarlos!
+
+</br>
+</br>
+</br>
+
+## Desplegar página web
+
+### Requisitos
+
+1. [Archivo War]() del proyecto
+2. Windows Server
+3. Tomcat 8.5
