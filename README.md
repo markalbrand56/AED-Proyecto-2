@@ -5,6 +5,11 @@
 ### Registro
 
 1. Dirigirse a la página de **Sign Up**
-[Sign Up](Algoritmos y Estructuras de Datos\Proyectos\AED-Proyecto-2\img\Captura de pantalla 2022-06-02 112915.jpg)
+
+[Sign Up](https://github.com/markalbrand56/AED-Proyecto-2/blob/build/img/Captura%20de%20pantalla%202022-06-02%20112915.jpg)
+
+2. Ingresar un nombre de usuario
+3. Ingresar todos los datos requeridos
+4. Responder la encuesta de los gustos
 
 ### Recomendación
