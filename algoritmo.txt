@@ -42,6 +42,7 @@ carrera es igual a ingreso en casilla de selección 7
 
 
 ###################Procesos###################
+
 Obtenención de perfiles
 
 verificación si perfil actual es igual a primer elemento de lista de perfiles
