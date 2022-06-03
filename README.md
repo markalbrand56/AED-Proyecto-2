@@ -1,7 +1,8 @@
 # UVG Match
 
-1. [Pruebas de usuario]()
-2. [Base de datos final]()
+1. [Pruebas de usuario](https://github.com/markalbrand56/AED-Proyecto-2/tree/main/img/Pruebas%20de%20usuario)
+2. [Base de datos final](https://github.com/markalbrand56/AED-Proyecto-2/blob/main/UVG%20MATCH.csv)
+
 
 ## ¿Cómo se usa?
 
